@@ -71,24 +71,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0C0C0C]/85 to-transparent pointer-events-none z-[1]" />
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-10 md:pb-14 max-w-[1360px] mx-auto">
-        {/* Top technical identifier */}
-        <div className="flex items-center justify-between">
-          <span
-            className="text-[10px] md:text-[11px] tracking-[0.24em] uppercase text-[#9E9D96]"
-            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-          >
-            RIPALDO JR / SYSTEM RJ7
-          </span>
-
-          <span
-            className="hidden sm:inline-block text-[10px] tracking-[0.2em] uppercase text-[#9E9D96]"
-            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-          >
-            ROBOT TRANSPORTER // 4WD + 3-AXIS MANIPULATOR
-          </span>
-        </div>
-
+      <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-16 pt-28 pb-12 md:pb-16 max-w-[1360px] mx-auto">
         {/* Main headline block */}
         <div className="flex flex-col gap-6">
           <div>
