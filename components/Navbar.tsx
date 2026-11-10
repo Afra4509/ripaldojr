@@ -50,20 +50,27 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#101010]/95 backdrop-blur-md border-b border-[#252525]"
-            : "bg-gradient-to-b from-[#101010]/90 to-transparent"
+            ? "bg-[#0C0C0C]/95 backdrop-blur-md border-b border-[#242424]"
+            : "bg-gradient-to-b from-[#0C0C0C]/90 to-transparent"
         }`}
       >
-        <div className="max-w-[1360px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
-          {/* Wordmark — Clean, bold, zero gimmicks */}
-          <a href="#" className="flex items-center gap-3">
+        <div className="max-w-[1360px] mx-auto px-6 md:px-10 h-[70px] flex items-center justify-between">
+          {/* Wordmark Lockup — Matches official engineering identity */}
+          <a href="#" className="flex flex-col gap-0.5 group">
             <span
-              className="text-[14px] md:text-[15px] font-bold tracking-[0.16em] uppercase text-[#EAE8E2]"
+              className="text-[14px] md:text-[15px] font-bold tracking-[0.16em] uppercase text-[#EAE8E2] leading-none"
               style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
             >
               RIPALDO JR
               <span className="text-[#FF5728]"> / </span>
               ROBOTICS
+            </span>
+            <span
+              className="text-[9px] tracking-[0.24em] uppercase text-[#9E9D96] leading-none flex items-center gap-1.5 font-mono pt-0.5"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF5728]" />
+              RJ7 ROBOT TRANSPORTER
             </span>
           </a>
 
@@ -76,7 +83,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     className={`relative text-[11px] tracking-[0.16em] uppercase transition-colors duration-200 py-1 ${
-                      isActive ? "text-[#EAE8E2] font-semibold" : "text-[#929292] hover:text-[#EAE8E2]"
+                      isActive ? "text-[#EAE8E2] font-semibold" : "text-[#9E9D96] hover:text-[#EAE8E2]"
                     }`}
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
@@ -90,9 +97,9 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Right: Clean Transparent Logos */}
+          {/* Right: Clean Transparent Logos (Zero white background box) */}
           <div className="hidden lg:flex items-center gap-4">
-            <div className="relative w-6 h-6 opacity-70 hover:opacity-100 transition-opacity">
+            <div className="relative w-6 h-6 opacity-75 hover:opacity-100 transition-opacity">
               <Image
                 src="/images/logos/logo-its-clean.png"
                 alt="ITS"
@@ -101,7 +108,7 @@ export default function Navbar() {
                 sizes="24px"
               />
             </div>
-            <div className="relative w-7 h-6 opacity-70 hover:opacity-100 transition-opacity">
+            <div className="relative w-7 h-6 opacity-75 hover:opacity-100 transition-opacity">
               <Image
                 src="/images/logos/logo-robotic-clean.png"
                 alt="Robotic ITS"
@@ -110,8 +117,8 @@ export default function Navbar() {
                 sizes="28px"
               />
             </div>
-            <div className="w-px h-4 bg-[#303030]" />
-            <div className="relative h-5 w-20 opacity-70 hover:opacity-100 transition-opacity">
+            <div className="w-px h-4 bg-[#2A2A2A]" />
+            <div className="relative h-5 w-20 opacity-75 hover:opacity-100 transition-opacity">
               <Image
                 src="/images/logos/logo-ripaldo-clean.png"
                 alt="Ripaldo Jr"

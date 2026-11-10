@@ -73,10 +73,11 @@ export default function ClosingSection() {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <p className="text-[15px] md:text-[16px] leading-[1.8] text-[#929292] max-w-xl mb-12">
-            Engineering is not only about building machines. It is about connecting ideas,
-            kinematic mechanisms, silicon circuits, and embedded code into an integrated
-            system that reliably performs in the physical world.
+          <p className="text-[14px] md:text-[15px] leading-[1.8] text-[#9E9D96] max-w-xl mb-12">
+            Proyek RJ7 membuktikan integrasi penuh antara perancangan mekanikal sasis 4WD,
+            isolasi regulasi daya bertingkat (12V / 6V / 5V), serta pemrograman mikrokontroler
+            STM32F401 32-bit ARM Cortex-M4. Dikonstruksi secara kolaboratif oleh mahasiswa
+            Institut Teknologi Sepuluh Nopember (ITS) dalam wadah Team Ripaldo Jr.
           </p>
         </FadeIn>
 
