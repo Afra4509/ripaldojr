@@ -41,9 +41,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen min-h-[640px] max-h-[1080px] overflow-hidden bg-[#0C0C0C]">
+    <section
+      className="hero relative w-full h-screen min-h-[640px] max-h-[1080px] overflow-hidden bg-[#0C0C0C]"
+      data-enter
+      aria-labelledby="hero-h"
+    >
       {/* High-res cinematic fallback poster */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" data-enter-media>
         <Image
           src="/images/robot/hero-poster.jpg"
           alt="RJ7 Robot Transporter System"
@@ -103,6 +107,7 @@ export default function Hero() {
               </span>
             </div>
             <h1
+              id="hero-h"
               className="text-[clamp(3.2rem,8.5vw,8.5rem)] font-bold leading-[0.88] tracking-[-0.03em] uppercase text-[#EAE8E2]"
               style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
             >
@@ -128,7 +133,7 @@ export default function Hero() {
               <div className="flex items-center gap-5">
                 <a
                   href="#overview"
-                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase font-bold px-6 py-3.5 transition-all duration-200 group bg-[#FF5728] text-black hover:bg-[#ff6e45]"
+                  className="btn btn--primary inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase font-bold px-6 py-3.5 group bg-[#FF5728] text-black hover:bg-[#ff6e45]"
                   style={{
                     fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)",
                   }}
@@ -141,7 +146,7 @@ export default function Hero() {
 
                 <a
                   href="#showcase"
-                  className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#9E9D96] hover:text-[#EAE8E2] transition-colors py-2"
+                  className="btn btn--secondary inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#9E9D96] hover:text-[#EAE8E2] px-4 py-3"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
                   PANORAMA SHOWCASE ↓

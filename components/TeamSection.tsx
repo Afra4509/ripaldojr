@@ -104,7 +104,7 @@ function TeamCard({ member, index }: { member: (typeof TEAM)[0]; index: number }
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group border border-[#303030] bg-[#141414] overflow-hidden hover:border-[#FF5728]/60 transition-colors duration-300 flex flex-col justify-between shadow-2xl"
+      className="card group border border-[#242424] bg-[#141414] overflow-hidden hover:border-[#FF5728]/60 transition-colors duration-300 flex flex-col justify-between shadow-2xl"
     >
       {/* Member Portrait */}
       <div className="relative overflow-hidden aspect-[3/4] bg-[#0d0d0d]">
@@ -196,13 +196,13 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030] relative"
+      className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424] relative"
     >
       <div className="max-w-[1360px] mx-auto">
         {/* Section label */}
         <FadeIn>
           <span
-            className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+            className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
             <span className="inline-block w-4 h-px bg-[#FF5728]" />
@@ -221,9 +221,9 @@ export default function TeamSection() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2} className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
-              Multidisciplinary crew driving engineering, embedded systems, sponsor relations,
-              finance administration, and creative direction for the RJ7 Robot Transporter.
+            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
+              Sinergi multidisiplin mahasiswa ITS: teknik mesin, elektronika daya, pemrograman tertanam,
+              serta administrasi proyek dan sponsorship untuk RJ7 Robot Transporter.
             </p>
           </FadeIn>
         </div>

@@ -34,9 +34,12 @@ export default function ClosingSection() {
   };
 
   return (
-    <section className="relative bg-[#101010] py-28 md:py-44 px-6 md:px-12 lg:px-16 border-t border-[#303030] overflow-hidden">
+    <section
+      className="relative bg-[#0C0C0C] py-28 md:py-44 px-6 md:px-12 lg:px-16 border-t border-[#242424] overflow-hidden"
+      data-moment="letters-assemble"
+    >
       {/* Background robot photography backdrop */}
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.10] pointer-events-none">
         <Image
           src="/images/robot/front.png"
           alt="RJ7 Robot Transporter"
@@ -45,8 +48,8 @@ export default function ClosingSection() {
           sizes="100vw"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#101010] via-[#101010]/80 to-[#101010]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-[#101010]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0C0C] via-[#0C0C0C]/80 to-[#0C0C0C]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-[#0C0C0C]" />
       </div>
 
       <div className="relative z-10 max-w-[1360px] mx-auto">
@@ -61,7 +64,7 @@ export default function ClosingSection() {
           </div>
 
           <h2
-            className="text-[clamp(2.8rem,7.5vw,7rem)] font-bold leading-[0.88] tracking-[-0.03em] uppercase text-[#EAE8E2] mb-8"
+            className="mo-la__type text-[clamp(2.8rem,7.5vw,7rem)] font-bold leading-[0.88] tracking-[-0.03em] uppercase text-[#EAE8E2] mb-8"
             style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
           >
             BUILT TO MOVE.
@@ -73,7 +76,7 @@ export default function ClosingSection() {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <p className="text-[14px] md:text-[15px] leading-[1.8] text-[#9E9D96] max-w-xl mb-12">
+          <p className="mo-la__sub text-[14px] md:text-[15px] leading-[1.8] text-[#9E9D96] max-w-xl mb-12">
             Proyek RJ7 membuktikan integrasi penuh antara perancangan mekanikal sasis 4WD,
             isolasi regulasi daya bertingkat (12V / 6V / 5V), serta pemrograman mikrokontroler
             STM32F401 32-bit ARM Cortex-M4. Dikonstruksi secara kolaboratif oleh mahasiswa
@@ -85,7 +88,7 @@ export default function ClosingSection() {
           <div className="flex flex-wrap items-center gap-6">
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-[#101010] bg-[#EAE8E2] hover:bg-[#FF5728] px-6 py-3.5 transition-colors duration-200 font-bold group shadow-xl"
+              className="btn btn--primary inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-[#0C0C0C] bg-[#EAE8E2] hover:bg-[#FF5728] hover:text-[#000000] px-6 py-3.5 font-bold group shadow-xl"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
               BACK TO TOP
@@ -93,7 +96,7 @@ export default function ClosingSection() {
             </button>
 
             <span
-              className="text-[10px] tracking-[0.2em] uppercase text-[#929292]"
+              className="text-[10px] tracking-[0.2em] uppercase text-[#9E9D96]"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
               TEAM RIPALDO JR // 2026

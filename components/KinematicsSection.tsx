@@ -6,12 +6,12 @@ export default function KinematicsSection() {
   return (
     <section
       id="kinematics"
-      className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030] relative"
+      className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424] relative"
     >
       <div className="max-w-[1360px] mx-auto">
         {/* Section label */}
         <span
-          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
           style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
         >
           <span className="inline-block w-4 h-px bg-[#FF5728]" />
@@ -31,7 +31,7 @@ export default function KinematicsSection() {
             </h2>
           </div>
           <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
+            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
               Simulasi interaktif trigonometri pergerakan lengan artikulasi 3-DOF RJ7.
               Uji sudut sendi bahu, siku, dan jepit capit untuk melihat kalkulasi pulsa timer hardware STM32 secara real-time.
             </p>

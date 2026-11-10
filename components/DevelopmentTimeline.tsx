@@ -51,13 +51,13 @@ export default function DevelopmentTimeline() {
   return (
     <section
       id="development"
-      className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030] relative"
+      className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424] relative"
     >
       <div className="max-w-[1360px] mx-auto">
         {/* Section label */}
         <div className="mb-14">
           <span
-            className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+            className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
             <span className="inline-block w-4 h-px bg-[#FF5728]" />
@@ -73,7 +73,7 @@ export default function DevelopmentTimeline() {
               <br />
               <span className="text-[#FF5728]">TO REALITY.</span>
             </h2>
-            <p className="text-[14px] md:text-[15px] text-[#929292] max-w-md leading-[1.7]">
+            <p className="text-[14px] md:text-[15px] text-[#9E9D96] max-w-md leading-[1.7]">
               Lintasan rekayasa terstruktur dari riset mekanikal hingga pengujian komprehensif sistem kendali STM32 RJ7 Robot Transporter.
             </p>
           </div>
@@ -87,11 +87,11 @@ export default function DevelopmentTimeline() {
               className="relative pl-12 md:pl-20 pb-12 group last:pb-0"
             >
               {/* Vertical Track Line */}
-              <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[1px] bg-[#303030]" />
+              <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[1px] bg-[#242424]" />
 
               {/* Number Badge */}
               <div className="absolute left-0 md:left-2 top-0">
-                <div className="w-8 h-8 md:w-9 md:h-9 border border-[#303030] bg-[#141414] group-hover:border-[#FF5728] transition-colors duration-300 flex items-center justify-center shadow-lg">
+                <div className="w-8 h-8 md:w-9 md:h-9 border border-[#242424] bg-[#141414] group-hover:border-[#FF5728] transition-colors duration-300 flex items-center justify-center shadow-lg">
                   <span
                     className="text-[10px] tracking-[0.16em] text-[#FF5728] font-bold"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
@@ -102,7 +102,7 @@ export default function DevelopmentTimeline() {
               </div>
 
               {/* Content Block */}
-              <div className="border border-[#303030] bg-[#141414] p-5 group-hover:border-[#FF5728]/40 transition-colors">
+              <div className="card border border-[#242424] bg-[#141414] p-5 group-hover:border-[#FF5728]/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <span
                     className="text-[9px] tracking-[0.24em] uppercase text-[#FF5728] font-semibold"
@@ -111,7 +111,7 @@ export default function DevelopmentTimeline() {
                     {stage.phase}
                   </span>
                   <span
-                    className="text-[9px] tracking-[0.2em] uppercase text-[#555]"
+                    className="text-[9px] tracking-[0.2em] uppercase text-[#777]"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
                     MILESTONE 0{i + 1}
@@ -126,7 +126,7 @@ export default function DevelopmentTimeline() {
                 </h3>
 
                 <p
-                  className="text-[13px] leading-[1.7] text-[#929292]"
+                  className="text-[13px] leading-[1.7] text-[#9E9D96]"
                   style={{ fontFamily: "var(--font-sans, sans-serif)" }}
                 >
                   {stage.description}

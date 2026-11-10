@@ -99,7 +99,7 @@ function HardwareCard({
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       onClick={onClick}
-      className="group relative bg-[#181818] border border-[#303030] hover:border-[#FF5728]/50 overflow-hidden cursor-pointer flex flex-col justify-between transition-colors duration-300"
+      className="card group relative bg-[#141414] border border-[#242424] hover:border-[#FF5728]/60 overflow-hidden cursor-pointer flex flex-col justify-between transition-colors duration-300"
       tabIndex={0}
       role="button"
       aria-label={`View ${img.perspective}`}
@@ -192,13 +192,13 @@ export default function HardwareGallery() {
     <>
       <section
         id="hardware"
-        className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030]"
+        className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424]"
       >
         <div className="max-w-[1360px] mx-auto">
           {/* Section label */}
           <FadeIn>
             <span
-              className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+              className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
               <span className="inline-block w-4 h-px bg-[#FF5728]" />

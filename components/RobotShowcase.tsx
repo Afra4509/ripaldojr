@@ -129,12 +129,12 @@ export default function RobotShowcase() {
   return (
     <section
       id="showcase"
-      className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#252525] relative"
+      className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424] relative"
     >
       <div className="max-w-[1360px] mx-auto">
         {/* Section label */}
         <span
-          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
           style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
         >
           <span className="inline-block w-4 h-px bg-[#FF5728]" />
@@ -154,16 +154,16 @@ export default function RobotShowcase() {
             </h2>
           </div>
           <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
+            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
               Eksplorasi blueprint interaktif 3D struktur mekanikal, aktuator capit, sasis 4WD, dan tata letak kelistrikan robot transporter RJ7 secara terintegrasi.
             </p>
           </div>
         </div>
 
         {/* Interactive CAD Blueprint Frame with Internal Callout Leader Lines */}
-        <div className="border border-[#303030] bg-[#101010] shadow-2xl relative overflow-hidden group">
+        <div className="border border-[#242424] bg-[#0E0E0E] shadow-2xl relative overflow-hidden group">
           {/* Top Control Bar */}
-          <div className="px-5 py-3.5 bg-[#141414] border-b border-[#252525] flex items-center justify-between z-20 relative">
+          <div className="px-5 py-3.5 bg-[#141414] border-b border-[#242424] flex items-center justify-between z-20 relative">
             <div className="flex items-center gap-3">
               <Compass size={15} className="text-[#FF5728]" />
               <span

@@ -151,10 +151,10 @@ export default function Footer() {
         </div>
 
         {/* Official Contact & Sponsorship Inquiries Block */}
-        <div className="border-t border-[#252525] pt-10 pb-8 mb-6">
+        <div className="border-t border-[#202020] pt-10 pb-8 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Contact Person Card */}
-            <div className="p-5 border border-[#303030] bg-[#141414] flex flex-col justify-between hover:border-[#FF5728]/50 transition-colors">
+            <div className="card p-5 border border-[#242424] bg-[#141414] flex flex-col justify-between hover:border-[#FF5728]/60 transition-colors shadow-lg">
               <div>
                 <span
                   className="text-[9px] tracking-[0.2em] uppercase text-[#FF5728] font-bold block mb-1.5"
@@ -168,7 +168,7 @@ export default function Footer() {
                 >
                   Ahmad Syahreza Nouval Siregar
                 </h4>
-                <p className="text-[12px] text-[#929292] mb-4">
+                <p className="text-[12px] text-[#9E9D96] mb-4">
                   Administrasi umum, koordinasi proyek, dan korespondensi resmi Team Ripaldo Jr.
                 </p>
               </div>
@@ -187,7 +187,7 @@ export default function Footer() {
             </div>
 
             {/* Sponsor Card */}
-            <div className="p-5 border border-[#303030] bg-[#141414] flex flex-col justify-between hover:border-[#FF5728]/50 transition-colors">
+            <div className="card p-5 border border-[#242424] bg-[#141414] flex flex-col justify-between hover:border-[#FF5728]/60 transition-colors shadow-lg">
               <div>
                 <span
                   className="text-[9px] tracking-[0.2em] uppercase text-[#FF5728] font-bold block mb-1.5"
@@ -201,7 +201,7 @@ export default function Footer() {
                 >
                   Dhanishara Zaschya Putri Syamsudin
                 </h4>
-                <p className="text-[12px] text-[#929292] mb-4">
+                <p className="text-[12px] text-[#9E9D96] mb-4">
                   Kemitraan industri, proposal sponsorship, kerja sama riset, dan pendanaan kompetisi.
                 </p>
               </div>

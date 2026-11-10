@@ -403,7 +403,7 @@ export default function ElectronicsSection() {
               <div
                 key={metric.label}
                 onClick={() => setComponentModalIndex(idx)}
-                className="group border border-[#303030] bg-[#141414] hover:border-[#FF5728]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl cursor-pointer"
+                className="card group border border-[#242424] bg-[#141414] hover:border-[#FF5728]/70 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl cursor-pointer"
                 tabIndex={0}
                 role="button"
                 aria-label={`Inspect ${metric.value}`}

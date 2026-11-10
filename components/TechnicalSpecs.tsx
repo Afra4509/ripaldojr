@@ -60,12 +60,12 @@ export default function TechnicalSpecs() {
   return (
     <section
       id="specs"
-      className="bg-[#101010] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030] relative"
+      className="bg-[#0C0C0C] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#242424] relative"
     >
       <div className="max-w-[1360px] mx-auto">
         {/* Section label */}
         <span
-          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#9E9D96] mb-10"
           style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
         >
           <span className="inline-block w-4 h-px bg-[#FF5728]" />
@@ -85,7 +85,7 @@ export default function TechnicalSpecs() {
             </h2>
           </div>
           <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
+            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
               Daftar Bill of Materials (BOM), timer periferal STM32, dan arsitektur kendali robot RJ7 Robot Transporter secara terperinci.
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function TechnicalSpecs() {
           {SPECS_GROUPS.map((group) => (
             <div
               key={group.category}
-              className="border border-[#303030] bg-[#141414] divide-y divide-[#303030] h-full flex flex-col justify-between shadow-xl"
+              className="card border border-[#242424] bg-[#141414] divide-y divide-[#222222] h-full flex flex-col justify-between shadow-xl"
             >
               <div>
                 {/* Category Header */}
