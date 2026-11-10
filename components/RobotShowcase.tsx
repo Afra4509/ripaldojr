@@ -9,6 +9,7 @@ interface CalloutItem {
   id: number;
   num: string;
   name: string;
+  badgeLabel: string;
   title: string;
   sub: string;
   desc: string;
@@ -22,6 +23,7 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
     id: 1,
     num: "01",
     name: "CAPIT",
+    badgeLabel: "CAPIT DUAL-ARM",
     title: "DUAL-ARM GRIPPER END-EFFECTOR",
     sub: "Servo MG90S // PA6 // TIM3_CH1",
     desc: "Mekanisme capit presisi dengan sudut jepit 42° dan buka 20°. Dilengkapi teknologi micro-stepping 2 µs/step serta proteksi auto-detach PWM untuk mencegah motor panas saat menahan beban muatan.",
@@ -38,6 +40,7 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
     id: 2,
     num: "02",
     name: "LENGAN 3-DOF",
+    badgeLabel: "LENGAN ARTIKULASI",
     title: "3-AXIS ARTICULATED ROBOTIC ARM",
     sub: "MG996R (Bahu) + MG90S (Siku)",
     desc: "Sendi bahu digerakkan servo torsi tinggi MG996R berbahan logam (10°–160°), dipadukan sendi siku MG90S (20°–165°) dengan radius jangkau payload 200 mm secara stabil.",
@@ -48,12 +51,13 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
       { k: "Material Link", v: "Akrilik Presisi 4mm CNC" },
     ],
     targetX: 41.5,
-    targetY: 51.5,
+    targetY: 48.0,
   },
   {
     id: 3,
     num: "03",
     name: "4WD PENGGERAK",
+    badgeLabel: "4WD GEARBOX MOTOR",
     title: "4WD DIFFERENTIAL DRIVE TRAIN",
     sub: "4x Motor DC 12V Gearbox + L298N",
     desc: "Konfigurasi penggerak empat roda dengan wiring cross-polarity. Mampu melakukan zero-radius differential pivot turn secara presisi dengan frekuensi PWM 250 Hz Soft-Ramp.",
@@ -70,6 +74,7 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
     id: 4,
     num: "04",
     name: "SASIS AKRILIK",
+    badgeLabel: "SASIS AKRILIK 4MM",
     title: "HIGH-RIGIDITY ACRYLIC CHASSIS",
     sub: "Laser-cut 4mm Plate + Structural Posts",
     desc: "Pelat akrilik transparan berpresisi tinggi dengan pilar struktural penopang getaran mekanis, menjamin stabilitas sumbu gerak saat bermanuver pada kecepatan maksimum.",
@@ -79,13 +84,14 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
       { k: "Dudukan Baterai", v: "Kompartemen Pusat Gravitasi Rendah" },
       { k: "Beban Maksimal", v: "Hingga 1.5 kg Payload" },
     ],
-    targetX: 62.0,
+    targetX: 63.0,
     targetY: 57.0,
   },
   {
     id: 5,
     num: "05",
     name: "ELEKTRONIKA",
+    badgeLabel: "STM32F401 & POWER BAY",
     title: "STM32F401 & ISOLATED POWER BAY",
     sub: "ARM Cortex-M4 84 MHz // Dual Buck 5V & 6V",
     desc: "Pusat pengendali mikrokontroler Black Pill dengan terminal PCT tahan getaran, regulator LM2596 (5.0V logika) dan XL4015 (6.0V servo) dari baterai LiPo 3S 12V.",
@@ -150,7 +156,7 @@ export default function RobotShowcase() {
                 className="text-[10px] tracking-[0.2em] uppercase text-[#EAE8E2] font-semibold"
                 style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
               >
-                RJ7 ROBOT TRANSPORTER — ANNOTATED HARDWARE BLUEPRINT
+                RJ7 ROBOT TRANSPORTER // ANNOTATED HARDWARE BLUEPRINT
               </span>
             </div>
 
@@ -200,34 +206,52 @@ export default function RobotShowcase() {
                 />
               </div>
 
-              {/* Interactive Hotspot Pins on the Robot */}
+              {/* Interactive Hotspot Pins and In-Frame Annotation Badges directly on the model */}
               <div className="absolute inset-0 pointer-events-auto">
                 {HARDWARE_CALLOUTS.map((item) => {
                   const isSelected = activeCallout === item.id;
                   return (
-                    <button
+                    <div
                       key={item.id}
-                      onClick={() => setActiveCallout(item.id)}
                       style={{ left: `${item.targetX}%`, top: `${item.targetY}%` }}
-                      className="absolute -translate-x-1/2 -translate-y-1/2 group/pin z-20 p-2 focus:outline-none"
-                      aria-label={`Inspect ${item.title}`}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 z-20 flex items-center group/pin"
                     >
-                      {/* Pulse Ring when Selected */}
-                      {isSelected && (
-                        <span className="absolute inset-1 rounded-full border border-[#FF5728] animate-ping opacity-75" />
-                      )}
-
-                      {/* Pin Button */}
-                      <span
-                        className={`relative w-7 h-7 flex items-center justify-center rounded-full text-[10px] font-mono font-bold transition-all duration-200 ${
-                          isSelected
-                            ? "bg-[#FF5728] text-black scale-110 shadow-[0_0_15px_rgba(255,87,40,0.6)]"
-                            : "bg-[#141414]/90 text-[#EAE8E2] border border-[#FF5728]/70 hover:border-[#FF5728] hover:scale-110"
-                        }`}
+                      <button
+                        onClick={() => setActiveCallout(item.id)}
+                        className="relative p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5728]"
+                        aria-label={`Inspect ${item.title}`}
                       >
-                        {item.num}
-                      </span>
-                    </button>
+                        {/* Pulse Ring when Selected */}
+                        {isSelected && (
+                          <span className="absolute inset-1 rounded-full border border-[#FF5728] animate-ping opacity-75" />
+                        )}
+
+                        {/* Pin Button */}
+                        <span
+                          className={`relative w-7 h-7 flex items-center justify-center rounded-full text-[10px] font-mono font-bold transition-all duration-200 ${
+                            isSelected
+                              ? "bg-[#FF5728] text-black scale-110 shadow-[0_0_15px_rgba(255,87,40,0.6)]"
+                              : "bg-[#141414]/90 text-[#EAE8E2] border border-[#FF5728]/70 hover:border-[#FF5728] hover:scale-110"
+                          }`}
+                        >
+                          {item.num}
+                        </span>
+                      </button>
+
+                      {/* In-Frame Connected Leader Tag (Directly inside image canvas) */}
+                      <button
+                        onClick={() => setActiveCallout(item.id)}
+                        className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-mono tracking-wider uppercase border transition-all duration-200 ml-1.5 ${
+                          isSelected
+                            ? "bg-[#FF5728] text-black border-[#FF5728] font-bold shadow-[0_0_12px_rgba(255,87,40,0.5)] translate-x-1"
+                            : "bg-[#101010]/85 text-[#9E9D96] border-[#303030] hover:text-[#EAE8E2] hover:border-[#FF5728]/70 backdrop-blur-sm"
+                        }`}
+                        style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                      >
+                        <span>{item.badgeLabel}</span>
+                        <span className="text-[10px]">{isSelected ? "●" : "→"}</span>
+                      </button>
+                    </div>
                   );
                 })}
               </div>
@@ -382,7 +406,7 @@ export default function RobotShowcase() {
                 className="text-[11px] tracking-[0.2em] uppercase text-[#FF5728] font-bold"
                 style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
               >
-                RJ7 ROBOT TRANSPORTER — FULL RESOLUTION PANORAMA
+                RJ7 ROBOT TRANSPORTER // FULL RESOLUTION PANORAMA
               </span>
               <button
                 onClick={() => setLightboxOpen(false)}

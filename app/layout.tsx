@@ -23,7 +23,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RJ7 ROBOT TRANSPORTER — RIPALDO JR",
+  title: "RJ7 ROBOT TRANSPORTER // RIPALDO JR",
   description:
     "An integrated robotic transport and manipulation system, developed by Team Ripaldo Jr through mechanical engineering, electronics, and embedded control.",
   keywords: [

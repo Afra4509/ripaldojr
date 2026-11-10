@@ -55,7 +55,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 h-[70px] flex items-center justify-between">
-          {/* Wordmark Lockup — Matches official engineering identity */}
+          {/* Wordmark Lockup: Matches official engineering identity */}
           <a href="#" className="flex flex-col gap-0.5 group">
             <span
               className="text-[14px] md:text-[15px] font-bold tracking-[0.16em] uppercase text-[#EAE8E2] leading-none"

@@ -2,21 +2,35 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Play, Pause } from "lucide-react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoActive, setVideoActive] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
-
-    v.src = "/videos/hero-loop.bin";
-    v.onplaying = () => setVideoActive(true);
-    v.play().catch(() => {
-      // If autoplay is blocked by browser policy, poster remains seamlessly visible
-    });
+    if (v) {
+      v.muted = true;
+      v.play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          setIsPlaying(false);
+        });
+    }
   }, []);
+
+  const togglePlayback = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setIsPlaying(true);
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section
@@ -35,18 +49,21 @@ export default function Hero() {
         />
       </div>
 
-      {/* Background Video — Streamed via .bin avoids IDM extension auto-capture */}
+      {/* Background Video with direct multi-source fallback */}
       <video
         ref={videoRef}
+        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-        className={`absolute inset-0 z-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
-          videoActive ? "opacity-100" : "opacity-0"
-        }`}
+        preload="auto"
+        poster="/images/robot/hero-poster.jpg"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-center"
         aria-hidden="true"
-      />
+      >
+        <source src="/api/hero-video" type="video/mp4" />
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
+      </video>
 
       {/* Dark Vignette & Gradients to guarantee text readability */}
       <div className="absolute inset-0 bg-black/45 pointer-events-none z-[1]" />
@@ -98,10 +115,10 @@ export default function Hero() {
             {/* Description + Clean High-Contrast Action Buttons */}
             <div className="flex flex-col gap-5 max-w-lg">
               <p className="text-[13.5px] md:text-[14.5px] leading-[1.7] text-[#9E9D96]">
-                Sistem robotika transport dan manipulasi mandiri bertenaga{" "}
+                Sistem robotika transport dan manipulasi terintegrasi bertenaga{" "}
                 <strong className="text-[#EAE8E2] font-semibold">STM32F401 ARM Cortex-M4</strong>,
-                dikonstruksi oleh <strong className="text-[#EAE8E2] font-semibold">Team Ripaldo Jr (ITS)</strong>{" "}
-                melalui sinergi tiga pilar rekayasa:{" "}
+                dikembangkan oleh <strong className="text-[#EAE8E2] font-semibold">Team Ripaldo Jr (ITS)</strong>{" "}
+                melalui divisi{" "}
                 <span className="text-[#EAE8E2] font-medium border-b border-[#FF5728]/50">Electrical</span>,{" "}
                 <span className="text-[#EAE8E2] font-medium border-b border-[#FF5728]/50">Mechanical</span>, dan{" "}
                 <span className="text-[#EAE8E2] font-medium border-b border-[#FF5728]/50">Programming</span>.
@@ -131,26 +148,38 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right meta */}
-            <div className="flex flex-col items-start md:items-end gap-1 shrink-0">
-              <span
-                className="text-[10px] tracking-[0.22em] uppercase text-[#EAE8E2]"
+            {/* Right meta + Video Pause Control (WCAG R-39 compliance) */}
+            <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
+              <div className="text-left md:text-right">
+                <span
+                  className="block text-[10px] tracking-[0.22em] uppercase text-[#EAE8E2]"
+                  style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                >
+                  AUTONOMOUS ENGINEERING / 2026
+                </span>
+                <span
+                  className="block text-[9px] tracking-[0.22em] uppercase text-[#9E9D96]"
+                  style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                >
+                  TEAM RIPALDO JR // RJ7
+                </span>
+              </div>
+
+              <button
+                onClick={togglePlayback}
+                className="inline-flex items-center gap-2 px-2.5 py-1 border border-[#303030] bg-[#141414]/80 hover:border-[#FF5728] text-[9px] tracking-[0.16em] uppercase text-[#9E9D96] hover:text-[#EAE8E2] transition-colors"
                 style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                aria-label={isPlaying ? "Pause background video" : "Play background video"}
               >
-                AUTONOMOUS ENGINEERING / 2026
-              </span>
-              <span
-                className="text-[9px] tracking-[0.22em] uppercase text-[#9E9D96]"
-                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-              >
-                TEAM RIPALDO JR // RJ7
-              </span>
+                {isPlaying ? <Pause size={10} /> : <Play size={10} />}
+                <span>{isPlaying ? "VIDEO PAUSE" : "VIDEO PLAY"}</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Clean scroll indicator — No blinking animation */}
+      {/* Clean scroll indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none opacity-60">
         <div className="w-[1px] h-6 bg-[#FF5728]" />
         <span

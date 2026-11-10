@@ -227,7 +227,7 @@ export default function Footer() {
             className="text-[9px] tracking-[0.2em] uppercase text-[#929292]"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
-            © 2026 TEAM RIPALDO JR — INSTITUT TEKNOLOGI SEPULUH NOPEMBER
+            © 2026 TEAM RIPALDO JR // INSTITUT TEKNOLOGI SEPULUH NOPEMBER
           </span>
           <span
             className="text-[9px] tracking-[0.2em] uppercase text-[#929292]"

@@ -24,7 +24,7 @@ const SPECS_GROUPS = [
       { label: "Driver Motor Sasis", value: "L298N Dual H-Bridge (Sinyal PWM 250 Hz Smooth Torque)" },
       { label: "Regulator Logika (5.0V)", value: "Step-Down LM2596 (Suplai STM32, Bluetooth HC-05, Sensor IR)" },
       { label: "Regulator Servo (6.0V)", value: "Step-Down XL4015 High-Current (Suplai 3x Motor Servo Lengan)" },
-      { label: "Distribusi Jalur Kabel", value: "PCT (Push-in Connector Terminal) — Tahan Arus & Getaran" },
+      { label: "Distribusi Jalur Kabel", value: "PCT (Push-in Connector Terminal): Tahan Arus & Getaran" },
       { label: "Sumber Catu Daya", value: "Baterai LiPo 3S / Aki 12V DC" },
     ],
   },

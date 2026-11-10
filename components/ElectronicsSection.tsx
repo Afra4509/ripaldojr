@@ -8,14 +8,14 @@ import { ZoomIn, X, ChevronLeft, ChevronRight, Cpu, Radio, Zap, Activity } from 
 const PCB_IMAGES = [
   {
     src: "/images/pcb/pcb-photo-1.jpg",
-    title: "FABRICATED PCB — ASSEMBLED TOP",
+    title: "FABRICATED PCB // ASSEMBLED TOP",
     badge: "PHYSICAL HARDWARE",
     caption:
       "Physical fabricated control board assembled and populated by team Ripaldo Jr. Features integrated terminal headers, power isolation, and control breakout.",
   },
   {
     src: "/images/pcb/pcb-photo-2.jpg",
-    title: "FABRICATED PCB — COMPONENT DETAIL",
+    title: "FABRICATED PCB // COMPONENT DETAIL",
     badge: "MACRO INSPECTION",
     caption:
       "Macro detail of solder joints, trace routing, onboard voltage regulation, and signal distribution bus for motor and actuator lines.",
@@ -237,7 +237,7 @@ const ARCHITECTURE_METRICS = [
       { k: "Sumber Catu Daya", v: "Baterai LiPo 3S / Aki Kering 12V DC High Discharge" },
       { k: "Regulator Logika (5V)", v: "Step-Down LM2596 (Set 5.0V Presisi) untuk STM32 & Sensor" },
       { k: "Regulator Servo (6V)", v: "Step-Down XL4015 (Set 6.0V, 5A Arus Tinggi) untuk 3x Servo" },
-      { k: "Terminal Bus", v: "PCT (Push-in Connector Terminal) — Tahan Arus Besar & Getaran" },
+      { k: "Terminal Bus", v: "PCT (Push-in Connector Terminal): Tahan Arus Besar & Getaran" },
       { k: "Isolasi Kelistrikan", v: "Rel daya 6V servo terpisah total dari rel 5V logika mikrokontroler" },
       { k: "Common Ground Bus", v: "Titik referensi nol potensial bersama pencegah noise ground loop" },
     ],

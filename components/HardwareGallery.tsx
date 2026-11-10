@@ -220,7 +220,7 @@ export default function HardwareGallery() {
             </FadeIn>
             <FadeIn delay={0.2} className="max-w-md">
               <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
-                Five comprehensive perspectives of the RJ7 Robot Transporter — click any image
+                Five comprehensive perspectives of the RJ7 Robot Transporter: click any image
                 to inspect structural linkages, actuator mounts, and electronics placement in full-screen zoom.
               </p>
             </FadeIn>
