@@ -8,46 +8,23 @@ export default function Hero() {
   const [videoActive, setVideoActive] = useState(false);
 
   useEffect(() => {
-    let active = true;
-    let blobUrl: string | null = null;
+    const v = videoRef.current;
+    if (!v) return;
 
-    // Fetch video data as an in-memory blob to guarantee zero IDM download popups
-    fetch("/videos/hero-loop.bin")
-      .then((res) => {
-        if (!res.ok) throw new Error("Video load error");
-        return res.blob();
-      })
-      .then((raw) => {
-        if (!active) return;
-        const videoBlob = new Blob([raw], { type: "video/mp4" });
-        blobUrl = URL.createObjectURL(videoBlob);
-        const v = videoRef.current;
-        if (v) {
-          v.src = blobUrl;
-          v.onplaying = () => {
-            if (active) setVideoActive(true);
-          };
-          v.play().catch(() => {});
-        }
-      })
-      .catch(() => {
-        // Fallback gracefully to poster
-      });
-
-    return () => {
-      active = false;
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
-    };
+    v.src = "/videos/hero-loop.bin";
+    v.onplaying = () => setVideoActive(true);
+    v.play().catch(() => {
+      // If autoplay is blocked by browser policy, poster remains seamlessly visible
+    });
   }, []);
 
   return (
     <section
       className="hero relative w-full h-screen min-h-[640px] max-h-[1080px] overflow-hidden bg-[#0C0C0C]"
-      data-enter
       aria-labelledby="hero-h"
     >
       {/* High-res cinematic fallback poster */}
-      <div className="absolute inset-0 z-0" data-enter-media>
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/robot/hero-poster.jpg"
           alt="RJ7 Robot Transporter System"
@@ -58,13 +35,13 @@ export default function Hero() {
         />
       </div>
 
-      {/* Background Video — Played via memory blob to bypass IDM interception */}
+      {/* Background Video — Streamed via .bin avoids IDM extension auto-capture */}
       <video
         ref={videoRef}
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         className={`absolute inset-0 z-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
           videoActive ? "opacity-100" : "opacity-0"
         }`}

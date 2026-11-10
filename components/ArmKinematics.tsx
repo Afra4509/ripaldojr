@@ -169,7 +169,7 @@ export default function ArmKinematics() {
             <circle cx={wristX} cy={wristY} r="5" fill="#181818" stroke="#FF5728" strokeWidth="2" />
 
             {/* Annotations */}
-            <text x="baseOrigin.x" y="260" fill="#777" fontSize="9" fontFamily="monospace">
+            <text x={baseOrigin.x - 40} y="260" fill="#777" fontSize="9" fontFamily="monospace">
               SHOULDER (MG996R)
             </text>
             <text x={wristX + 10} y={wristY - 14} fill="#FF5728" fontSize="10" fontFamily="monospace" fontWeight="bold">
