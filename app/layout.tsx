@@ -23,10 +23,17 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RIVAL / ROBOTICS — Engineered to Move",
+  title: "RJ7 ROBOT TRANSPORTER — RIPALDO JR",
   description:
-    "An integrated robotic transport and manipulation system, developed through mechanical engineering, electronics, and embedded control.",
-  keywords: ["robotics", "engineering", "embedded systems", "mechatronics", "RIVAL"],
+    "An integrated robotic transport and manipulation system, developed by Team Ripaldo Jr through mechanical engineering, electronics, and embedded control.",
+  keywords: [
+    "RJ7",
+    "Robot Transporter",
+    "Ripaldo Jr",
+    "Robotics Engineering",
+    "Embedded Systems",
+    "Mechatronics",
+  ],
 };
 
 export default function RootLayout({
@@ -35,8 +42,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
+    >
+      <body className="bg-[#101010] text-[#EAE8E2] antialiased selection:bg-[#FF5728] selection:text-black">
+        {children}
+      </body>
     </html>
   );
 }

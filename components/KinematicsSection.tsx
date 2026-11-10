@@ -1,0 +1,47 @@
+"use client";
+
+import ArmKinematics from "./ArmKinematics";
+
+export default function KinematicsSection() {
+  return (
+    <section
+      id="kinematics"
+      className="bg-[#181818] py-24 md:py-36 px-6 md:px-12 lg:px-16 border-t border-[#303030] relative"
+    >
+      <div className="max-w-[1360px] mx-auto">
+        {/* Section label */}
+        <span
+          className="inline-flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.26em] uppercase text-[#929292] mb-10"
+          style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+        >
+          <span className="inline-block w-4 h-px bg-[#FF5728]" />
+          05 / MANIPULATOR KINEMATICS
+        </span>
+
+        {/* Section Headline */}
+        <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-xl">
+            <h2
+              className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
+              style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
+            >
+              FORWARD KINEMATICS
+              <br />
+              <span className="text-[#FF5728]">& SERVO SIMULATION.</span>
+            </h2>
+          </div>
+          <div className="max-w-md">
+            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
+              Simulasi interaktif trigonometri pergerakan lengan artikulasi 3-DOF RJ7.
+              Uji sudut sendi bahu, siku, dan jepit capit untuk melihat kalkulasi pulsa timer hardware STM32 secara real-time.
+            </p>
+          </div>
+        </div>
+
+        {/* Arm Kinematics Interactive Inspector */}
+        <ArmKinematics />
+      </div>
+    </section>
+  );
+}
+

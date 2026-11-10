@@ -1,0 +1,162 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    if (v.readyState >= 2) {
+      setLoaded(true);
+    }
+
+    const onReady = () => setLoaded(true);
+    v.addEventListener("loadeddata", onReady);
+    v.addEventListener("canplay", onReady);
+    v.addEventListener("playing", onReady);
+    v.play().catch(() => {});
+
+    return () => {
+      v.removeEventListener("loadeddata", onReady);
+      v.removeEventListener("canplay", onReady);
+      v.removeEventListener("playing", onReady);
+    };
+  }, []);
+
+  return (
+    <section className="relative w-full h-screen min-h-[640px] max-h-[1080px] overflow-hidden bg-[#101010]">
+      {/* Background Video — Streamed via .bin avoids IDM extension interception */}
+      <video
+        ref={videoRef}
+        src="/videos/hero-loop.bin"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+        aria-hidden="true"
+      />
+
+      {/* Dark Vignette & Gradients to guarantee text readability */}
+      <div className="absolute inset-0 bg-black/45 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#101010] via-[#101010]/75 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#101010]/80 to-transparent pointer-events-none" />
+
+      {/* Hero Content */}
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-10 md:pb-14 max-w-[1360px] mx-auto">
+        {/* Top technical identifier */}
+        <div className="flex items-center justify-between">
+          <span
+            className="text-[10px] md:text-[11px] tracking-[0.24em] uppercase text-[#929292]"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            RIPALDO JR / SYSTEM RJ7
+          </span>
+
+          <span
+            className="hidden sm:inline-block text-[10px] tracking-[0.2em] uppercase text-[#929292]"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            ROBOT TRANSPORTER // 4WD + 3-AXIS MANIPULATOR
+          </span>
+        </div>
+
+        {/* Main headline block */}
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">
+              <span
+                className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#FF5728] font-bold"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                RJ7 ROBOT TRANSPORTER
+              </span>
+            </div>
+            <h1
+              className="text-[clamp(3.2rem,8.5vw,8.5rem)] font-bold leading-[0.88] tracking-[-0.03em] uppercase text-[#EAE8E2]"
+              style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
+            >
+              ENGINEERED
+              <br />
+              <span className="text-[#FF5728]">TO MOVE.</span>
+            </h1>
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-2 border-t border-[#303030]/60">
+            {/* Description + Clean High-Contrast Action Buttons */}
+            <div className="flex flex-col gap-5 max-w-lg">
+              <p className="text-[14px] md:text-[15px] leading-[1.7] text-[#929292]">
+                Sistem robotika transport dan manipulasi terintegrasi bertenaga
+                <strong className="text-[#EAE8E2] font-semibold"> STM32F401 ARM Cortex-M4</strong>,
+                dikembangkan oleh <strong className="text-[#EAE8E2] font-semibold">Team Ripaldo Jr</strong>{" "}
+                melalui sinergi divisi Electrical, Mechanical, dan Programming.
+              </p>
+
+              <div className="flex items-center gap-5">
+                <a
+                  href="#overview"
+                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase font-bold px-6 py-3.5 transition-all duration-200 group"
+                  style={{
+                    backgroundColor: "#FF5728",
+                    color: "#000000",
+                    fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)",
+                  }}
+                >
+                  <span style={{ color: "#000000" }}>EXPLORE THE SYSTEM</span>
+                  <span
+                    className="inline-block transition-transform duration-200 group-hover:translate-x-1"
+                    style={{ color: "#000000" }}
+                  >
+                    →
+                  </span>
+                </a>
+
+                <a
+                  href="#showcase"
+                  className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#929292] hover:text-[#EAE8E2] transition-colors py-2"
+                  style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                >
+                  PANORAMA SHOWCASE ↓
+                </a>
+              </div>
+            </div>
+
+            {/* Right meta */}
+            <div className="flex flex-col items-start md:items-end gap-1 shrink-0">
+              <span
+                className="text-[10px] tracking-[0.22em] uppercase text-[#EAE8E2]"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                AUTONOMOUS ENGINEERING / 2026
+              </span>
+              <span
+                className="text-[9px] tracking-[0.22em] uppercase text-[#929292]"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                TEAM RIPALDO JR // RJ7
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Clean scroll indicator — No blinking animation */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none opacity-60">
+        <div className="w-[1px] h-6 bg-[#FF5728]" />
+        <span
+          className="text-[8px] tracking-[0.3em] uppercase text-[#929292]"
+          style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+        >
+          SCROLL
+        </span>
+      </div>
+    </section>
+  );
+}
