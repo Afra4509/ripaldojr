@@ -65,7 +65,7 @@ export default function RootLayout({
       </head>
       <body className="bg-[#0C0C0C] text-[#EAE8E2] antialiased selection:bg-[#FF5728] selection:text-black">
         {children}
-        <Script src="/assets/system.js" strategy="afterInteractive" />
+        <Script src="/assets/system.js" type="module" strategy="afterInteractive" />
         <Script src="/assets/motion/motion.js" type="module" strategy="afterInteractive" />
         <Script src="/assets/moments/moments.js" type="module" strategy="afterInteractive" />
       </body>
