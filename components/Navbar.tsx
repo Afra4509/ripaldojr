@@ -55,23 +55,18 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 h-[70px] flex items-center justify-between">
-          {/* Wordmark Lockup: Matches official engineering identity */}
-          <a href="#" className="flex flex-col gap-0.5 group">
-            <span
-              className="text-[14px] md:text-[15px] font-bold tracking-[0.16em] uppercase text-[#EAE8E2] leading-none"
-              style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
-            >
-              RIPALDO JR
-              <span className="text-[#FF5728]"> / </span>
-              ROBOTICS
-            </span>
-            <span
-              className="text-[9px] tracking-[0.24em] uppercase text-[#9E9D96] leading-none flex items-center gap-1.5 font-mono pt-0.5"
-              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-            >
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF5728]" />
-              RJ7 ROBOT TRANSPORTER
-            </span>
+          {/* Brand: Official Ripaldo Jr Logo */}
+          <a href="#" className="flex items-center group py-1" aria-label="Team Ripaldo Jr">
+            <div className="relative h-9 sm:h-10 w-40 sm:w-48 shrink-0 transition-opacity duration-200 group-hover:opacity-85">
+              <Image
+                src="/images/logos/logo-ripaldo-clean.png"
+                alt="Team Ripaldo Jr"
+                fill
+                priority
+                className="object-contain object-left"
+                sizes="(max-width: 640px) 160px, 192px"
+              />
+            </div>
           </a>
 
           {/* Desktop Nav */}
@@ -96,38 +91,6 @@ export default function Navbar() {
               );
             })}
           </ul>
-
-          {/* Right: Clean Transparent Logos (Zero white background box) */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="relative w-6 h-6 opacity-75 hover:opacity-100 transition-opacity">
-              <Image
-                src="/images/logos/logo-its-clean.png"
-                alt="ITS"
-                fill
-                className="object-contain"
-                sizes="24px"
-              />
-            </div>
-            <div className="relative w-7 h-6 opacity-75 hover:opacity-100 transition-opacity">
-              <Image
-                src="/images/logos/logo-robotic-clean.png"
-                alt="Robotic ITS"
-                fill
-                className="object-contain"
-                sizes="28px"
-              />
-            </div>
-            <div className="w-px h-4 bg-[#2A2A2A]" />
-            <div className="relative h-5 w-20 opacity-75 hover:opacity-100 transition-opacity">
-              <Image
-                src="/images/logos/logo-ripaldo-clean.png"
-                alt="Ripaldo Jr"
-                fill
-                className="object-contain object-right"
-                sizes="80px"
-              />
-            </div>
-          </div>
 
           {/* Mobile menu button */}
           <button
@@ -156,12 +119,15 @@ export default function Navbar() {
           }`}
         >
           <div className="mb-6 pb-4 border-b border-[#252525]">
-            <p
-              className="text-[13px] font-bold tracking-[0.14em] uppercase text-[#EAE8E2]"
-              style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
-            >
-              RIPALDO JR / ROBOTICS
-            </p>
+            <div className="relative h-8 w-36">
+              <Image
+                src="/images/logos/logo-ripaldo-clean.png"
+                alt="Team Ripaldo Jr"
+                fill
+                className="object-contain object-left"
+                sizes="144px"
+              />
+            </div>
           </div>
 
           <ul className="list-none m-0 p-0 flex flex-col gap-4">
