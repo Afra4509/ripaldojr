@@ -99,7 +99,7 @@ export default function TechnicalSpecs() {
           {SPECS_GROUPS.map((group) => (
             <div
               key={group.category}
-              className="card border border-[#242424] bg-[#141414] divide-y divide-[#222222] h-full flex flex-col justify-between shadow-xl"
+              className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] divide-y divide-white/[0.06] h-full flex flex-col justify-between shadow-xl rounded-sm corner-bracket"
             >
               <div>
                 {/* Category Header */}

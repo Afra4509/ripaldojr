@@ -69,28 +69,35 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-5 xl:gap-7 list-none m-0 p-0">
-            {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
-              return (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className={`relative text-[11px] tracking-[0.16em] uppercase transition-colors duration-200 py-1 ${
-                      isActive ? "text-[#EAE8E2] font-semibold" : "text-[#9E9D96] hover:text-[#EAE8E2]"
-                    }`}
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    {link.label}
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FF5728]" />
-                    )}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          {/* Desktop Nav + Status */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <ul className="flex items-center gap-5 xl:gap-7 list-none m-0 p-0">
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className={`relative text-[11px] tracking-[0.16em] uppercase transition-colors duration-200 py-1 ${
+                        isActive ? "text-[#EAE8E2] font-semibold" : "text-[#9E9D96] hover:text-[#EAE8E2]"
+                      }`}
+                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                    >
+                      {link.label}
+                      {isActive && (
+                        <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FF5728] shadow-[0_0_8px_rgba(255,87,40,0.8)]" />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="flex items-center gap-2.5 pl-4 border-l border-white/[0.1] text-[9px] font-mono tracking-widest text-[#9E9D96]">
+              <span className="pulse-indicator" />
+              <span className="text-[#EAE8E2] uppercase">RJ7 ACTIVE</span>
+            </div>
+          </div>
 
           {/* Mobile menu button */}
           <button

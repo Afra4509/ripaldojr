@@ -117,7 +117,7 @@ export default function DevelopmentTimeline() {
               </div>
 
               {/* Content Block (Clean, Zero Text Clutter) */}
-              <div className="card border border-[#242424] bg-[#141414] p-5 group-hover:border-[#FF5728]/50 transition-colors shadow-lg">
+              <div className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] p-5.5 rounded-sm shadow-xl corner-bracket group-hover:border-[#FF5728]/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <span
                     className="text-[9px] tracking-[0.24em] uppercase text-[#FF5728] font-semibold"

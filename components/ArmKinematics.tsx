@@ -48,9 +48,9 @@ export default function ArmKinematics() {
   const jawSpread = Math.max(8, 26 - ((gripper - 20) / 22) * 18);
 
   return (
-    <div className="border border-[#303030] bg-[#141414] p-6 md:p-8 mt-16 shadow-2xl">
+    <div className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#141414] to-[#0E0E0E] p-6 md:p-8 mt-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)] rounded-sm corner-bracket">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-[#303030] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-white/[0.08] gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Sliders size={16} className="text-[#FF5728]" />

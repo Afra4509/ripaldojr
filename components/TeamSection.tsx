@@ -104,7 +104,7 @@ function TeamCard({ member, index }: { member: (typeof TEAM)[0]; index: number }
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="card group border border-[#242424] bg-[#141414] overflow-hidden hover:border-[#FF5728]/60 transition-colors duration-300 flex flex-col justify-between shadow-2xl"
+      className="tech-card group border border-white/[0.08] bg-[#131313] overflow-hidden hover:border-[#FF5728]/60 transition-colors duration-300 flex flex-col justify-between shadow-2xl rounded-sm corner-bracket"
     >
       {/* Member Portrait */}
       <div className="relative overflow-hidden aspect-[3/4] bg-[#0d0d0d]">
@@ -112,7 +112,7 @@ function TeamCard({ member, index }: { member: (typeof TEAM)[0]; index: number }
           src={member.img}
           alt={member.name}
           fill
-          className="object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           quality={85}
         />

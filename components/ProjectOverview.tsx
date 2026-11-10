@@ -121,7 +121,7 @@ export default function ProjectOverview() {
             return (
               <div
                 key={div.name}
-                className="border border-[#262626] bg-[#141414] p-6 md:p-7 flex flex-col justify-between hover:border-[#FF5728]/60 transition-colors shadow-xl group"
+                className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] p-6 md:p-7 flex flex-col justify-between shadow-xl group rounded-sm relative corner-bracket"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -146,7 +146,7 @@ export default function ProjectOverview() {
                     {div.tags.map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 border border-[#242424] bg-[#0E0E0E] text-[9px] font-mono text-[#9E9D96]"
+                        className="px-2 py-0.5 border border-white/[0.06] bg-[#0A0A0A] text-[9px] font-mono text-[#9E9D96]"
                         style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                       >
                         {t}
@@ -155,10 +155,10 @@ export default function ProjectOverview() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#222222] flex items-center justify-between">
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
                   <button
                     onClick={() => setActiveDivisionModal(div)}
-                    className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-[#FF5728] hover:text-[#ff7a52] transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/[0.08] bg-[#141414] hover:border-[#FF5728] text-[10px] font-mono uppercase tracking-wider text-[#FF5728] hover:text-[#FFA07A] transition-all"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
                     <span>INSPEKSI DIVISI</span>
@@ -268,7 +268,7 @@ export default function ProjectOverview() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#121212] border border-[#262626] max-w-lg w-full p-6 sm:p-8 shadow-2xl relative"
+              className="bg-[#121212] border border-white/[0.1] border-t-2 border-t-[#FF5728] max-w-lg w-full p-6 sm:p-8 shadow-2xl relative corner-bracket"
             >
               <div className="flex items-center justify-between pb-4 mb-5 border-b border-[#222]">
                 <div className="flex items-center gap-2.5">
@@ -329,7 +329,7 @@ export default function ProjectOverview() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#121212] border border-[#262626] max-w-xl w-full p-6 sm:p-8 shadow-2xl relative"
+              className="bg-[#121212] border border-white/[0.1] border-t-2 border-t-[#FF5728] max-w-xl w-full p-6 sm:p-8 shadow-2xl relative corner-bracket"
             >
               <div className="flex items-center justify-between pb-4 mb-5 border-b border-[#222]">
                 <div className="flex items-center gap-2.5">

@@ -14,7 +14,7 @@ const NAV_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0c0c0c] border-t border-[#303030] px-6 md:px-12 lg:px-16 py-16">
+    <footer className="bg-[#090909] border-t border-white/[0.08] px-6 md:px-12 lg:px-16 py-16">
       <div className="max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
           {/* Identity & Logos (5 cols) */}

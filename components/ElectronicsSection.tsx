@@ -404,7 +404,7 @@ export default function ElectronicsSection() {
               <div
                 key={metric.label}
                 onClick={() => setComponentModalIndex(idx)}
-                className="card group border border-[#242424] bg-[#141414] hover:border-[#FF5728]/70 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl cursor-pointer"
+                className="tech-card group border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] hover:border-[#FF5728]/70 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl cursor-pointer rounded-sm corner-bracket"
                 tabIndex={0}
                 role="button"
                 aria-label={`Inspect ${metric.value}`}

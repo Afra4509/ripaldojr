@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ZoomIn, X, Compass, Layers, ChevronRight, ChevronLeft, Check } from "lucide-react";
+import { ZoomIn, X, Compass, Layers, ChevronRight, ChevronLeft, Check, Info, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface CalloutItem {
@@ -108,6 +108,7 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
 
 export default function RobotShowcase() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [subsystemModalOpen, setSubsystemModalOpen] = useState(false);
   const [activeCallout, setActiveCallout] = useState<number | null>(1);
 
   const selectedItem = HARDWARE_CALLOUTS.find((c) => c.id === activeCallout) || null;
@@ -150,9 +151,9 @@ export default function RobotShowcase() {
         </div>
 
         {/* Interactive CAD Blueprint Frame */}
-        <div className="border border-[#242424] bg-[#0E0E0E] shadow-2xl relative overflow-hidden group">
+        <div className="border border-white/[0.08] bg-[#0E0E0E] shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden group corner-bracket">
           {/* Top Control Bar */}
-          <div className="px-5 py-3.5 bg-[#141414] border-b border-[#242424] flex items-center justify-between z-20 relative">
+          <div className="px-5 py-3.5 bg-[#141414] border-b border-white/[0.08] flex items-center justify-between z-20 relative">
             <div className="flex items-center gap-3">
               <Compass size={15} className="text-[#FF5728]" />
               <span
@@ -270,12 +271,12 @@ export default function RobotShowcase() {
             </div>
 
             {/* Dedicated HUD Inspector Panel (4 cols on lg, below on mobile) */}
-            <div className="lg:col-span-4 bg-[#121212] border-t lg:border-t-0 lg:border-l border-[#242424] p-6 flex flex-col justify-between">
+            <div className="lg:col-span-4 bg-[#111111] border-t lg:border-t-0 lg:border-l border-white/[0.08] p-6 flex flex-col justify-between">
               {selectedItem ? (
                 <div className="flex flex-col h-full justify-between">
                   <div>
                     {/* Header */}
-                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#202020]">
+                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.08]">
                       <span
                         className="text-[10px] font-mono font-bold text-[#FF5728] tracking-widest uppercase"
                         style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
@@ -299,17 +300,25 @@ export default function RobotShowcase() {
                     </h3>
 
                     {/* Sub / Tag */}
-                    <div className="inline-block px-2.5 py-1 bg-[#181818] border border-[#282828] text-[10px] font-mono text-[#FF5728] mb-4">
+                    <div className="inline-block px-2.5 py-1 bg-[#181818] border border-white/[0.08] text-[10px] font-mono text-[#FF5728] mb-3">
                       {selectedItem.sub}
                     </div>
 
-                    {/* Description */}
-                    <p className="text-[12.5px] leading-[1.65] text-[#9E9D96] mb-6">
-                      {selectedItem.desc}
-                    </p>
+                    {/* Inspection Button (Clean Layout - Details in Modal) */}
+                    <button
+                      onClick={() => setSubsystemModalOpen(true)}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/[0.08] bg-[#161616] hover:border-[#FF5728] text-[10px] font-mono tracking-wider uppercase text-[#FF5728] hover:text-[#FFA07A] mb-5 transition-all w-full justify-between"
+                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                    >
+                      <span className="flex items-center gap-1.5">
+                        <Info size={12} />
+                        <span>DETAIL DESKRIPSI TEKNIS</span>
+                      </span>
+                      <ArrowUpRight size={12} />
+                    </button>
 
                     {/* Spec Items Table */}
-                    <div className="border border-[#222222] bg-[#101010] divide-y divide-[#1D1D1D] mb-6">
+                    <div className="border border-white/[0.08] bg-[#0E0E0E] divide-y divide-white/[0.06] mb-6">
                       {selectedItem.specs.map((s) => (
                         <div
                           key={s.k}
@@ -443,6 +452,71 @@ export default function RobotShowcase() {
                 1920 x 760 HIGH DEFINITION
               </span>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Subsystem Detail Inspection Modal */}
+      <AnimatePresence>
+        {subsystemModalOpen && selectedItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setSubsystemModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121212] border border-white/[0.1] border-t-2 border-t-[#FF5728] max-w-lg w-full p-6 sm:p-8 shadow-2xl relative corner-bracket"
+            >
+              <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-[#FF5728]" />
+                  <span
+                    className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#FF5728]"
+                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                  >
+                    {selectedItem.num} // {selectedItem.title}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setSubsystemModalOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center border border-white/[0.1] text-[#9E9D96] hover:text-[#EAE8E2] hover:border-[#FF5728] transition-colors"
+                  aria-label="Tutup modal"
+                >
+                  <X size={15} />
+                </button>
+              </div>
+
+              <div className="inline-block px-2.5 py-1 bg-[#181818] border border-white/[0.08] text-[10px] font-mono text-[#FF5728] mb-4">
+                {selectedItem.sub}
+              </div>
+
+              <p className="text-[13px] leading-[1.75] text-[#9E9D96] mb-6">
+                {selectedItem.desc}
+              </p>
+
+              <div className="border border-white/[0.08] bg-[#0E0E0E] divide-y divide-white/[0.06] mb-6">
+                {selectedItem.specs.map((s) => (
+                  <div key={s.k} className="px-3.5 py-2 flex items-center justify-between text-[11px]">
+                    <span className="text-[#888] uppercase tracking-wider font-mono text-[9.5px]">
+                      {s.k}
+                    </span>
+                    <span className="text-[#EAE8E2] font-mono text-right text-[11px]">
+                      {s.v}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#666]">
+                <span>SUBSYSTEM CAD SPECIFICATION</span>
+                <span className="text-[#FF5728]">VERIFIED</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

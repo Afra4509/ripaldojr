@@ -100,7 +100,7 @@ function HardwareCard({
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       onClick={onClick}
-      className="card group relative bg-[#141414] border border-[#242424] hover:border-[#FF5728]/60 overflow-hidden cursor-pointer flex flex-col justify-between transition-colors duration-300"
+      className="tech-card group relative bg-[#131313] border border-white/[0.08] hover:border-[#FF5728]/60 overflow-hidden cursor-pointer flex flex-col justify-between rounded-sm corner-bracket shadow-xl"
       tabIndex={0}
       role="button"
       aria-label={`View ${img.perspective}`}
@@ -117,7 +117,7 @@ function HardwareCard({
           src={img.src}
           alt={img.perspective}
           fill
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={priority}
           quality={85}
