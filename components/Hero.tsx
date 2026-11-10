@@ -2,37 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Play, Pause, ArrowRight, ArrowDown, Info, X, Shield, Cpu, Activity } from "lucide-react";
+import { ArrowRight, ArrowDown, Info, X, Shield } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
       v.muted = true;
-      v.play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          setIsPlaying(false);
-        });
+      v.loop = true;
+      v.play().catch(() => {});
     }
   }, []);
-
-  const togglePlayback = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setIsPlaying(true);
-    } else {
-      v.pause();
-      setIsPlaying(false);
-    }
-  };
 
   return (
     <>
@@ -154,32 +138,20 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Right meta + Video Pause Control (WCAG R-39 compliance) */}
-              <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
-                <div className="text-left md:text-right">
-                  <span
-                    className="block text-[10px] tracking-[0.22em] uppercase text-[#EAE8E2]"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    AUTONOMOUS ENGINEERING / 2026
-                  </span>
-                  <span
-                    className="block text-[9px] tracking-[0.22em] uppercase text-[#9E9D96]"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    TEAM RIPALDO JR // RJ7
-                  </span>
-                </div>
-
-                <button
-                  onClick={togglePlayback}
-                  className="inline-flex items-center gap-2 px-2.5 py-1 border border-[#303030] bg-[#141414]/80 hover:border-[#FF5728] text-[9px] tracking-[0.16em] uppercase text-[#9E9D96] hover:text-[#EAE8E2] transition-colors"
+              {/* Right meta */}
+              <div className="flex flex-col items-start md:items-end gap-1 shrink-0">
+                <span
+                  className="block text-[10px] tracking-[0.22em] uppercase text-[#EAE8E2]"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  aria-label={isPlaying ? "Pause background video" : "Play background video"}
                 >
-                  {isPlaying ? <Pause size={10} /> : <Play size={10} />}
-                  <span>{isPlaying ? "VIDEO PAUSE" : "VIDEO PLAY"}</span>
-                </button>
+                  AUTONOMOUS ENGINEERING / 2026
+                </span>
+                <span
+                  className="block text-[9px] tracking-[0.22em] uppercase text-[#9E9D96]"
+                  style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                >
+                  TEAM RIPALDO JR // RJ7
+                </span>
               </div>
             </div>
           </div>
