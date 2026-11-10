@@ -30,11 +30,13 @@ export default function KinematicsSection() {
               <span className="text-[#FF5728]">& SERVO SIMULATION.</span>
             </h2>
           </div>
-          <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
-              Simulasi interaktif trigonometri pergerakan lengan artikulasi 3-DOF RJ7.
-              Uji sudut sendi bahu, siku, dan jepit capit untuk melihat kalkulasi pulsa timer hardware STM32 secara real-time.
-            </p>
+          <div>
+            <span
+              className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              TRIGONOMETRI 3-DOF // PWM TIM3 & TIM4 REAL-TIME
+            </span>
           </div>
         </div>
 

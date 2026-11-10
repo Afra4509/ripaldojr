@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import { Phone, ArrowUpRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Overview", href: "#overview" },
@@ -116,34 +116,38 @@ export default function Footer() {
             <ul className="space-y-2.5 list-none m-0 p-0 text-[11px]">
               <li>
                 <span
-                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors block"
+                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors inline-flex items-center gap-1"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
-                  STM32F401 Firmware (C++) ↗
+                  <span>STM32F401 Firmware (C++)</span>
+                  <ArrowUpRight size={11} />
                 </span>
               </li>
               <li>
                 <span
-                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors block"
+                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors inline-flex items-center gap-1"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
-                  KiCad PCB Layouts & Gerbers ↗
+                  <span>KiCad PCB Layouts & Gerbers</span>
+                  <ArrowUpRight size={11} />
                 </span>
               </li>
               <li>
                 <span
-                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors block"
+                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors inline-flex items-center gap-1"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
-                  3-DOF Arm Kinematics & CAD ↗
+                  <span>3-DOF Arm Kinematics & CAD</span>
+                  <ArrowUpRight size={11} />
                 </span>
               </li>
               <li>
                 <span
-                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors block"
+                  className="text-[#929292] hover:text-[#FF5728] cursor-pointer transition-colors inline-flex items-center gap-1"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
-                  Team Ripaldo Jr Contact ↗
+                  <span>Team Ripaldo Jr Contact</span>
+                  <ArrowUpRight size={11} />
                 </span>
               </li>
             </ul>
@@ -182,7 +186,7 @@ export default function Footer() {
                 <Phone size={13} className="text-[#FF5728]" />
                 <span className="font-bold">+62 853-6605-0293</span>
                 <span className="text-[#777]">(~Ahmad Syahreza)</span>
-                <span className="text-[#FF5728]">↗</span>
+                <ArrowUpRight size={12} className="text-[#FF5728]" />
               </a>
             </div>
 
@@ -215,7 +219,7 @@ export default function Footer() {
                 <Phone size={13} className="text-[#FF5728]" />
                 <span className="font-bold">+62 822-6032-0812</span>
                 <span className="text-[#777]">(~naraa)</span>
-                <span className="text-[#FF5728]">↗</span>
+                <ArrowUpRight size={12} className="text-[#FF5728]" />
               </a>
             </div>
           </div>

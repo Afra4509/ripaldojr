@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import { motion, useInView } from "framer-motion";
+import { Maximize2, ArrowUpRight } from "lucide-react";
 import { ImageLightbox, type GalleryImage } from "./ImageLightbox";
 
 const IMAGES: GalleryImage[] = [
@@ -134,10 +135,11 @@ function HardwareCard({
             {img.tag}
           </span>
           <span
-            className="text-[9px] tracking-[0.2em] uppercase text-[#FF5728] bg-[#101010]/80 backdrop-blur-sm px-2 py-1 border border-[#FF5728]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            className="inline-flex items-center gap-1 text-[9px] tracking-[0.2em] uppercase text-[#FF5728] bg-[#101010]/80 backdrop-blur-sm px-2 py-1 border border-[#FF5728]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
-            EXPAND ↗
+            <span>EXPAND</span>
+            <Maximize2 size={10} />
           </span>
         </div>
       </div>
@@ -160,26 +162,20 @@ function HardwareCard({
             </span>
           </div>
           <span
-            className="text-[10px] tracking-[0.18em] uppercase text-[#929292] group-hover:text-[#FF5728] transition-colors"
+            className="inline-flex items-center gap-1 text-[10px] tracking-[0.18em] uppercase text-[#929292] group-hover:text-[#FF5728] transition-colors"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
-            VIEW PERSPECTIVE →
+            <span>INSPECT</span>
+            <ArrowUpRight size={12} />
           </span>
         </div>
 
         <h4
-          className="text-[13px] text-[#EAE8E2] uppercase font-bold tracking-[0.08em] mb-1.5"
+          className="text-[13px] text-[#EAE8E2] uppercase font-bold tracking-[0.08em]"
           style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
         >
           {img.perspective}
         </h4>
-
-        <p
-          className="text-[12px] leading-[1.6] text-[#929292]"
-          style={{ fontFamily: "var(--font-sans, sans-serif)" }}
-        >
-          {img.caption}
-        </p>
       </div>
     </motion.div>
   );
@@ -207,7 +203,7 @@ export default function HardwareGallery() {
           </FadeIn>
 
           {/* Headline & description */}
-          <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeIn delay={0.1} className="max-w-xl">
               <h2
                 className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
@@ -218,11 +214,13 @@ export default function HardwareGallery() {
                 EVERY <span className="text-[#FF5728]">COMPONENT.</span>
               </h2>
             </FadeIn>
-            <FadeIn delay={0.2} className="max-w-md">
-              <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
-                Five comprehensive perspectives of the RJ7 Robot Transporter: click any image
-                to inspect structural linkages, actuator mounts, and electronics placement in full-screen zoom.
-              </p>
+            <FadeIn delay={0.2}>
+              <span
+                className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                5 HIGH-DEFINITION PERSPECTIVES // CAD VERIFIED
+              </span>
             </FadeIn>
           </div>
 

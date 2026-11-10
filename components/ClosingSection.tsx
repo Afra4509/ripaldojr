@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 
 function AssembleHeadline({ inView }: { inView: boolean }) {
   const line1 = "BUILT TO MOVE.";
@@ -120,13 +121,26 @@ export default function ClosingSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex flex-wrap items-center gap-3 mb-10"
         >
-          <p className="text-[14px] md:text-[15px] leading-[1.8] text-[#9E9D96] max-w-xl mb-12">
-            Proyek RJ7 membuktikan integrasi penuh antara perancangan mekanikal sasis 4WD,
-            isolasi regulasi daya bertingkat (12V / 6V / 5V), serta pemrograman mikrokontroler
-            STM32F401 32-bit ARM Cortex-M4. Dikonstruksi secara kolaboratif oleh mahasiswa
-            Institut Teknologi Sepuluh Nopember (ITS) dalam wadah Team Ripaldo Jr.
-          </p>
+          <span
+            className="px-3 py-1.5 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#EAE8E2]"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            STM32F401 ARM CORTEX-M4
+          </span>
+          <span
+            className="px-3 py-1.5 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            4WD DIFFERENTIAL CHASSIS
+          </span>
+          <span
+            className="px-3 py-1.5 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            3-AXIS MANIPULATOR ARM
+          </span>
         </motion.div>
 
         <motion.div
@@ -137,11 +151,11 @@ export default function ClosingSection() {
         >
           <button
             onClick={scrollToTop}
-            className="btn inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-[#0C0C0C] bg-[#EAE8E2] hover:bg-[#FF5728] hover:text-[#000000] px-6 py-3.5 font-bold group shadow-xl"
+            className="btn inline-flex items-center gap-2.5 text-[11px] tracking-[0.2em] uppercase text-[#0C0C0C] bg-[#EAE8E2] hover:bg-[#FF5728] hover:text-[#000000] px-6 py-3.5 font-bold group shadow-xl"
             style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
           >
-            BACK TO TOP
-            <span className="inline-block transition-transform duration-200 group-hover:-translate-y-1">↑</span>
+            <span>BACK TO TOP</span>
+            <ArrowUp size={14} className="transition-transform duration-200 group-hover:-translate-y-1" />
           </button>
 
           <span

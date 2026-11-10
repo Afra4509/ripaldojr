@@ -5,9 +5,9 @@ import { Sliders, RotateCcw, Cpu, CheckCircle2 } from "lucide-react";
 
 export default function ArmKinematics() {
   // Joint angles
-  const [shoulder, setShoulder] = useState<number>(110); // 10° – 160°
-  const [elbow, setElbow] = useState<number>(105);       // 20° – 165°
-  const [gripper, setGripper] = useState<number>(20);     // 20° – 42°
+  const [shoulder, setShoulder] = useState<number>(110); // 10° - 160°
+  const [elbow, setElbow] = useState<number>(105);       // 20° - 165°
+  const [gripper, setGripper] = useState<number>(20);     // 20° - 42°
 
   // Presets
   const applyPreset = (s: number, e: number, g: number) => {

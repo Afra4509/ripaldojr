@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ZoomIn, X, Compass, Layers, ChevronRight, ChevronLeft } from "lucide-react";
+import { ZoomIn, X, Compass, Layers, ChevronRight, ChevronLeft, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface CalloutItem {
@@ -43,7 +43,7 @@ const HARDWARE_CALLOUTS: CalloutItem[] = [
     badgeLabel: "LENGAN ARTIKULASI",
     title: "3-AXIS ARTICULATED ROBOTIC ARM",
     sub: "MG996R (Bahu) + MG90S (Siku)",
-    desc: "Sendi bahu digerakkan servo torsi tinggi MG996R berbahan logam (10°–160°), dipadukan sendi siku MG90S (20°–165°) dengan radius jangkau payload 200 mm secara stabil.",
+    desc: "Sendi bahu digerakkan servo torsi tinggi MG996R berbahan logam (10°-160°), dipadukan sendi siku MG90S (20°-165°) dengan radius jangkau payload 200 mm secara stabil.",
     specs: [
       { k: "Sendi Bahu", v: "MG996R High-Torque 11 kg·cm (PA7 // TIM3_CH2)" },
       { k: "Sendi Siku", v: "MG90S Metal Gear 2.2 kg·cm (PB8 // TIM4_CH3)" },
@@ -128,7 +128,7 @@ export default function RobotShowcase() {
         </span>
 
         {/* Section Headline */}
-        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2
               className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
@@ -139,10 +139,13 @@ export default function RobotShowcase() {
               <span className="text-[#FF5728]">IN FOCUS.</span>
             </h2>
           </div>
-          <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
-              Eksplorasi blueprint interaktif 3D struktur mekanikal, aktuator capit, sasis 4WD, dan tata letak kelistrikan robot transporter RJ7 secara terintegrasi.
-            </p>
+          <div className="flex items-center gap-2">
+            <span
+              className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              INTERACTIVE 3D BLUEPRINT // 5 SUBSISTEM
+            </span>
           </div>
         </div>
 
@@ -249,7 +252,11 @@ export default function RobotShowcase() {
                         style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                       >
                         <span>{item.badgeLabel}</span>
-                        <span className="text-[10px]">{isSelected ? "●" : "→"}</span>
+                        {isSelected ? (
+                          <Check size={11} className="text-black" />
+                        ) : (
+                          <ChevronRight size={12} className="text-[#9E9D96]" />
+                        )}
                       </button>
                     </div>
                   );
@@ -433,7 +440,7 @@ export default function RobotShowcase() {
                 TEAM RIPALDO JR // 4WD TRANSPORTER PROTOTYPE
               </span>
               <span style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}>
-                1920 × 760 HIGH DEFINITION
+                1920 x 760 HIGH DEFINITION
               </span>
             </div>
           </motion.div>

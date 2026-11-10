@@ -11,8 +11,8 @@ const SPECS_GROUPS = [
       { label: "Platform Sasis", value: "4WD (Four-Wheel Drive) Differential Pivot Turn" },
       { label: "Material Rangka", value: "Akrilik Presisi Bening + Rangka Struktural Oranye" },
       { label: "Motor Sasis", value: "4x Motor DC 12V Gearbox (Cross-Polarity Wiring)" },
-      { label: "Sendi Bahu (Shoulder)", value: "1x Servo MG996R High-Torque Metal Gear (Range 10°–160°)" },
-      { label: "Sendi Siku (Elbow)", value: "1x Servo MG90S Metal Gear (Range 20°–165°)" },
+      { label: "Sendi Bahu (Shoulder)", value: "1x Servo MG996R High-Torque Metal Gear (Range 10°-160°)" },
+      { label: "Sendi Siku (Elbow)", value: "1x Servo MG90S Metal Gear (Range 20°-165°)" },
       { label: "Mekanisme Capit (Gripper)", value: "1x Servo MG90S (Micro-Stepping 2 µs + Auto-Detach PWM)" },
     ],
   },
@@ -73,7 +73,7 @@ export default function TechnicalSpecs() {
         </span>
 
         {/* Section Headline */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2
               className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
@@ -84,10 +84,13 @@ export default function TechnicalSpecs() {
               <span className="text-[#FF5728]">DATASHEET.</span>
             </h2>
           </div>
-          <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
-              Daftar Bill of Materials (BOM), timer periferal STM32, dan arsitektur kendali robot RJ7 Robot Transporter secara terperinci.
-            </p>
+          <div>
+            <span
+              className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              BILL OF MATERIALS // TIM2, TIM3, TIM4 // USART1
+            </span>
           </div>
         </div>
 

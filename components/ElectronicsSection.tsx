@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ZoomIn, X, ChevronLeft, ChevronRight, Cpu, Radio, Zap, Activity } from "lucide-react";
+import { ZoomIn, X, ChevronLeft, ChevronRight, Cpu, Radio, Zap, Activity, ArrowUpRight, ArrowRight } from "lucide-react";
 
 const PCB_IMAGES = [
   {
@@ -105,7 +105,7 @@ const STM32_PIN_MAPPING = [
     pinModule: "Signal (PWM)",
     pinStm: "PA7",
     timer: "TIM3_CH2",
-    desc: "PWM 50 Hz Sendi Bahu Utama (Range: 10° – 160°, Init: 110°)",
+    desc: "PWM 50 Hz Sendi Bahu Utama (Range: 10° - 160°, Init: 110°)",
     type: "PWM Servo",
   },
   {
@@ -113,7 +113,7 @@ const STM32_PIN_MAPPING = [
     pinModule: "Signal (PWM)",
     pinStm: "PB8",
     timer: "TIM4_CH3",
-    desc: "PWM 50 Hz Sendi Siku Lengan (Range: 20° – 165°, Init: 105°)",
+    desc: "PWM 50 Hz Sendi Siku Lengan (Range: 20° - 165°, Init: 105°)",
     type: "PWM Servo",
   },
   {
@@ -210,10 +210,10 @@ const ARCHITECTURE_METRICS = [
     ],
     details: [
       { k: "Sendi Bahu (Link 1)", v: "1x TowerPro MG996R High-Torque Metal Gear (11 kg·cm)" },
-      { k: "Sendi Siku (Link 2)", v: "1x TowerPro MG90S Metal Gear (2.2 kg·cm, 20° – 165°)" },
+      { k: "Sendi Siku (Link 2)", v: "1x TowerPro MG90S Metal Gear (2.2 kg·cm, 20° - 165°)" },
       { k: "Capit (End-Effector)", v: "1x MG90S dengan Micro-Stepping (2 µs/step, Buka 20°, Jepit 42°)" },
-      { k: "Pin & Timer Bahu", v: "PA7 // TIM3_CH2 (Rentang sudut: 10° – 160°, Posisi Awal: 110°)" },
-      { k: "Pin & Timer Siku", v: "PB8 // TIM4_CH3 (Rentang sudut: 20° – 165°, Posisi Awal: 105°)" },
+      { k: "Pin & Timer Bahu", v: "PA7 // TIM3_CH2 (Rentang sudut: 10° - 160°, Posisi Awal: 110°)" },
+      { k: "Pin & Timer Siku", v: "PB8 // TIM4_CH3 (Rentang sudut: 20° - 165°, Posisi Awal: 105°)" },
       { k: "Proteksi Termal", v: "Auto-Detach PWM otomatis nonaktif setelah capit menahan muatan" },
     ],
     role: "Mekanisme manipulator fisik untuk mengambil, mengangkat, dan memindahkan benda kerja. Kombinasi servo torsi tinggi pada bahu dan servo presisi ringan pada siku serta capit memberikan efisiensi daya optimal.",
@@ -224,7 +224,7 @@ const ARCHITECTURE_METRICS = [
     sub: "Regulasi step-down independen untuk isolasi logika STM32 & servo lengan",
     icon: Zap,
     image: "/images/components/power-combo.png",
-    tag: "POWER // 12V ➔ 5V & 6V",
+    tag: "POWER // 12V TO 5V & 6V",
     spec: "LM2596 (5.0V Logic) + XL4015 (6.0V Servo)",
     gallery: [
       { name: "Power Subsystem", src: "/images/components/power-combo.png" },
@@ -375,7 +375,7 @@ export default function ElectronicsSection() {
         </span>
 
         {/* Section Headline */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2
               className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
@@ -386,12 +386,13 @@ export default function ElectronicsSection() {
               <span className="text-[#FF5728]">BEHIND</span> THE MOTION.
             </h2>
           </div>
-          <div className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#929292] leading-[1.7]">
-              Arsitektur terintegrasi <strong className="text-[#EAE8E2]">STM32F401 ARM Cortex-M4</strong>,
-              regulasi daya bertingkat (12V / 6V / 5V), modul 4WD L298N, 3-axis servo PWM presisi,
-              serta komunikasi Bluetooth HC-05 dirancang khusus untuk RJ7 Robot Transporter.
-            </p>
+          <div>
+            <span
+              className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              STM32F401 // DUAL BUCK // 4WD // BLUETOOTH
+            </span>
           </div>
         </div>
 
@@ -429,10 +430,11 @@ export default function ElectronicsSection() {
 
                   {/* Hover expand hint */}
                   <span
-                    className="absolute top-3 right-3 text-[8px] tracking-[0.2em] uppercase text-[#FF5728] opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 bg-[#141414]/90 px-2 py-0.5 border border-[#FF5728]/30 font-mono"
+                    className="inline-flex items-center gap-1 absolute top-3 right-3 text-[8px] tracking-[0.2em] uppercase text-[#FF5728] opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 bg-[#141414]/90 px-2 py-0.5 border border-[#FF5728]/30 font-mono"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
-                    INSPECT ↗
+                    <span>INSPECT</span>
+                    <ArrowUpRight size={10} />
                   </span>
 
                   {/* Component Image */}
@@ -461,15 +463,11 @@ export default function ElectronicsSection() {
                     </div>
 
                     <h4
-                      className="text-[14px] font-bold text-[#EAE8E2] leading-[1.35] mb-2 group-hover:text-[#FF5728] transition-colors"
+                      className="text-[14px] font-bold text-[#EAE8E2] leading-[1.35] group-hover:text-[#FF5728] transition-colors"
                       style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
                     >
                       {metric.value}
                     </h4>
-
-                    <p className="text-[12px] text-[#929292] leading-[1.6]">
-                      {metric.sub}
-                    </p>
                   </div>
 
                   <div className="pt-3 mt-4 border-t border-[#252525] flex items-center justify-between text-[9px] text-[#777]">
@@ -477,10 +475,11 @@ export default function ElectronicsSection() {
                       {metric.spec}
                     </span>
                     <span
-                      className="text-[#FF5728] uppercase tracking-[0.14em] font-semibold text-[9px]"
+                      className="inline-flex items-center gap-1 text-[#FF5728] uppercase tracking-[0.14em] font-semibold text-[9px]"
                       style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                     >
-                      DETAIL →
+                      <span>DETAIL</span>
+                      <ArrowRight size={10} />
                     </span>
                   </div>
                 </div>

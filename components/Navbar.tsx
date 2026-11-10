@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X, Menu } from "lucide-react";
+import { X, Menu, ChevronRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Overview", href: "#overview" },
@@ -140,7 +140,7 @@ export default function Navbar() {
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
                   {link.label}
-                  <span className="text-[#303030]">→</span>
+                  <ChevronRight size={13} className="text-[#444]" />
                 </a>
               </li>
             ))}

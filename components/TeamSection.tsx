@@ -211,7 +211,7 @@ export default function TeamSection() {
         </FadeIn>
 
         {/* Headline */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <FadeIn delay={0.1} className="max-w-xl">
             <h2
               className="text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.025em] uppercase text-[#EAE8E2]"
@@ -220,11 +220,13 @@ export default function TeamSection() {
               TEAM <span className="text-[#FF5728]">RIPALDO JR.</span>
             </h2>
           </FadeIn>
-          <FadeIn delay={0.2} className="max-w-md">
-            <p className="text-[14px] md:text-[15px] text-[#9E9D96] leading-[1.7]">
-              Sinergi multidisiplin mahasiswa ITS: teknik mesin, elektronika daya, pemrograman tertanam,
-              serta administrasi proyek dan sponsorship untuk RJ7 Robot Transporter.
-            </p>
+          <FadeIn delay={0.2}>
+            <span
+              className="px-3 py-1 border border-[#2a2a2a] bg-[#121212] text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+            >
+              6 MAHASISWA ITS // MULTIDISIPLIN TEKNIK
+            </span>
           </FadeIn>
         </div>
 
