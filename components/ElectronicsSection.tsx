@@ -317,6 +317,7 @@ export default function ElectronicsSection() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [componentModalIndex, setComponentModalIndex] = useState<number | null>(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [pinTableModalOpen, setPinTableModalOpen] = useState(false);
 
   const prev = () => setActiveTab((a) => (a - 1 + PCB_IMAGES.length) % PCB_IMAGES.length);
   const next = () => setActiveTab((a) => (a + 1) % PCB_IMAGES.length);
@@ -671,75 +672,37 @@ export default function ElectronicsSection() {
           </div>
         </div>
 
-        {/* Full STM32 Pin Mapping Table */}
-        <div className="border border-[#303030] bg-[#141414] overflow-hidden">
-          <div className="px-6 py-4 bg-[#181818] border-b border-[#303030] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
+        {/* Minimalist STM32 Pinout Trigger Banner */}
+        <div className="border border-white/[0.08] bg-[#121212] p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5728]" />
               <span
-                className="text-[11px] tracking-[0.24em] uppercase text-[#FF5728] font-bold block"
+                className="text-[10px] tracking-[0.24em] uppercase text-[#FF5728] font-bold"
                 style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
               >
-                TABEL PIN MAPPING STM32F401RCT6 BLACK PILL
-              </span>
-              <span className="text-[11px] text-[#929292]">
-                Konfigurasi hardware timer, GPIO, dan interupsi komunikasi UART
+                STM32F401RCT6 HARDWARE PINOUT
               </span>
             </div>
-
-            <span className="text-[10px] tracking-[0.16em] uppercase text-[#929292] border border-[#303030] px-3 py-1 bg-[#101010]">
-              TOTAL 14 PINS ASSIGNED
-            </span>
+            <h3
+              className="text-[17px] md:text-[19px] font-bold text-[#EAE8E2] uppercase tracking-wide"
+              style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
+            >
+              14-PIN ASSIGNMENT & TIMER MATRIX
+            </h3>
+            <p className="text-[12px] text-[#888] mt-1 font-mono">
+              Konfigurasi hardware timer (TIM2, TIM3, TIM4), GPIO logic output, dan interupsi USART1
+            </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-[12px]">
-              <thead>
-                <tr className="border-b border-[#303030] bg-[#111111] text-[10px] tracking-[0.18em] uppercase text-[#929292]">
-                  <th className="py-3 px-5">Komponen / Modul</th>
-                  <th className="py-3 px-4">Pin Komponen</th>
-                  <th className="py-3 px-4">Pin STM32</th>
-                  <th className="py-3 px-4">Periferal / Timer</th>
-                  <th className="py-3 px-4">Tipe Sinyal</th>
-                  <th className="py-3 px-5">Fungsi & Keterangan Teknis</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#262626]">
-                {STM32_PIN_MAPPING.map((pin) => (
-                  <tr key={pin.module + pin.pinStm} className="hover:bg-[#181818] transition-colors">
-                    <td className="py-3 px-5 font-semibold text-[#EAE8E2] whitespace-nowrap">
-                      {pin.module}
-                    </td>
-                    <td
-                      className="py-3 px-4 text-[#929292] font-mono text-[11px]"
-                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                    >
-                      {pin.pinModule}
-                    </td>
-                    <td
-                      className="py-3 px-4 text-[#FF5728] font-bold font-mono"
-                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                    >
-                      {pin.pinStm}
-                    </td>
-                    <td
-                      className="py-3 px-4 text-[#EAE8E2] font-mono text-[11px]"
-                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                    >
-                      {pin.timer}
-                    </td>
-                    <td className="py-3 px-4">
-                      <span className="inline-block px-2 py-0.5 border border-[#303030] bg-[#101010] text-[9px] uppercase tracking-[0.14em] text-[#929292]">
-                        {pin.type}
-                      </span>
-                    </td>
-                    <td className="py-3 px-5 text-[#929292] leading-[1.5]">
-                      {pin.desc}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <button
+            onClick={() => setPinTableModalOpen(true)}
+            className="inline-flex items-center gap-2 px-5 py-3 bg-[#181818] hover:bg-[#FF5728] hover:text-black text-[#EAE8E2] border border-white/[0.1] text-[10px] font-mono uppercase tracking-[0.18em] transition-all shrink-0"
+            style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+          >
+            <span>BUKA TABEL PINOUT LENGKAP</span>
+            <ArrowUpRight size={13} />
+          </button>
         </div>
       </div>
 
@@ -950,6 +913,94 @@ export default function ElectronicsSection() {
                 <ChevronRight size={14} />
               </button>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Dedicated STM32 Pin Mapping Table Modal */}
+      <AnimatePresence>
+        {pinTableModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setPinTableModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121212] border border-white/[0.1] max-w-5xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative"
+            >
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
+                <div>
+                  <span
+                    className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#FF5728] block"
+                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                  >
+                    TABEL PIN MAPPING STM32F401RCT6 BLACK PILL
+                  </span>
+                  <span className="text-[11px] text-[#888]">
+                    Konfigurasi hardware timer, GPIO, dan interupsi komunikasi UART
+                  </span>
+                </div>
+                <button
+                  onClick={() => setPinTableModalOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center border border-white/[0.1] text-[#9E9D96] hover:text-[#EAE8E2] hover:border-[#FF5728] transition-colors"
+                  aria-label="Tutup modal"
+                >
+                  <X size={15} />
+                </button>
+              </div>
+
+              <div className="overflow-x-auto border border-white/[0.08] bg-[#0E0E0E]">
+                <table className="w-full text-left border-collapse text-[12px]">
+                  <thead>
+                    <tr className="border-b border-white/[0.08] bg-[#141414] text-[10px] tracking-[0.18em] uppercase text-[#888] font-mono">
+                      <th className="py-3 px-4">Komponen / Modul</th>
+                      <th className="py-3 px-3">Pin Modul</th>
+                      <th className="py-3 px-3">Pin STM32</th>
+                      <th className="py-3 px-3">Periferal / Timer</th>
+                      <th className="py-3 px-3">Tipe</th>
+                      <th className="py-3 px-4">Fungsi & Keterangan Teknis</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {STM32_PIN_MAPPING.map((pin) => (
+                      <tr key={pin.module + pin.pinStm} className="hover:bg-white/[0.02] transition-colors">
+                        <td className="py-3 px-4 font-semibold text-[#EAE8E2] whitespace-nowrap">
+                          {pin.module}
+                        </td>
+                        <td className="py-3 px-3 text-[#888] font-mono text-[11px]">
+                          {pin.pinModule}
+                        </td>
+                        <td className="py-3 px-3 text-[#FF5728] font-bold font-mono">
+                          {pin.pinStm}
+                        </td>
+                        <td className="py-3 px-3 text-[#EAE8E2] font-mono text-[11px]">
+                          {pin.timer}
+                        </td>
+                        <td className="py-3 px-3">
+                          <span className="inline-block px-2 py-0.5 border border-white/[0.08] bg-[#111111] text-[9px] uppercase tracking-wider text-[#999] font-mono">
+                            {pin.type}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-[#888] text-[11.5px] leading-relaxed">
+                          {pin.desc}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="pt-4 mt-6 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#666]">
+                <span>TOTAL 14 HARDWARE PINS VERIFIED</span>
+                <span className="text-[#FF5728]">STM32F401RCT6</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

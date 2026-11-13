@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Terminal, ShieldCheck, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Square, Sliders } from "lucide-react";
+import { Terminal, ShieldCheck, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Square, Sliders, X, ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const SPECS_GROUPS = [
   {
@@ -44,6 +45,8 @@ const SPECS_GROUPS = [
 
 export default function TechnicalSpecs() {
   const [activeCmd, setActiveCmd] = useState<string>("S");
+  const [activeCategoryTab, setActiveCategoryTab] = useState(0);
+  const [datasheetModalOpen, setDatasheetModalOpen] = useState(false);
   const [telemetryLog, setTelemetryLog] = useState<string[]>([
     "[STM32_BOOT] STM32F401RCT6 Black Pill online. TIM2, TIM3, TIM4 initialized.",
     "[UART1_READY] Bluetooth HC-05 connected at 38400 bps. State: STANDBY.",
@@ -94,59 +97,52 @@ export default function TechnicalSpecs() {
           </div>
         </div>
 
-        {/* 3-Column Structured Engineering Table */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {SPECS_GROUPS.map((group) => (
-            <div
-              key={group.category}
-              className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] divide-y divide-white/[0.06] h-full flex flex-col justify-between shadow-xl rounded-sm corner-bracket"
+        {/* Modern Minimalist Category Switcher & Specs Grid */}
+        <div className="mb-14">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap items-center gap-2 mb-6 border-b border-white/[0.08] pb-4">
+            {SPECS_GROUPS.map((group, idx) => (
+              <button
+                key={group.category}
+                onClick={() => setActiveCategoryTab(idx)}
+                className={`px-4 py-2 text-[10px] font-mono tracking-[0.16em] uppercase transition-all duration-200 ${
+                  activeCategoryTab === idx
+                    ? "bg-[#FF5728] text-black font-bold shadow-[0_0_15px_rgba(255,87,40,0.3)]"
+                    : "bg-[#141414] text-[#888] border border-white/[0.06] hover:text-[#EAE8E2] hover:border-white/[0.15]"
+                }`}
+              >
+                0{idx + 1} // {group.category}
+              </button>
+            ))}
+
+            <button
+              onClick={() => setDatasheetModalOpen(true)}
+              className="ml-auto inline-flex items-center gap-1.5 px-3 py-2 text-[10px] font-mono tracking-[0.14em] uppercase text-[#FF5728] hover:text-[#FFA07A] transition-colors"
             >
-              <div>
-                {/* Category Header */}
-                <div className="px-5 py-4 bg-[#181818] flex items-center justify-between">
-                  <span
-                    className="text-[10px] tracking-[0.22em] uppercase text-[#FF5728] font-bold"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    {group.category}
-                  </span>
-                  <span
-                    className="text-[9px] tracking-[0.18em] uppercase text-[#929292]"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    {group.code}
-                  </span>
-                </div>
+              <span>LIHAT DATASHEET LENGKAP (18 SPESIFIKASI)</span>
+              <ArrowUpRight size={13} />
+            </button>
+          </div>
 
-                {/* Items */}
-                {group.items.map((item) => (
-                  <div
-                    key={item.label}
-                    className="px-5 py-3.5 flex flex-col gap-1 hover:bg-[#181818] transition-colors"
-                  >
-                    <span
-                      className="text-[9px] tracking-[0.16em] uppercase text-[#929292] font-medium"
-                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                    >
-                      {item.label}
-                    </span>
-                    <span className="text-[13px] text-[#EAE8E2] leading-[1.4] font-normal">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="px-5 py-2.5 bg-[#111111] border-t border-[#303030]">
+          {/* Active Category Specs Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SPECS_GROUPS[activeCategoryTab].items.map((item) => (
+              <div
+                key={item.label}
+                className="border border-white/[0.06] bg-[#121212] p-5 hover:border-white/[0.12] transition-colors"
+              >
                 <span
-                  className="text-[8px] tracking-[0.2em] uppercase text-[#555]"
+                  className="text-[9px] tracking-[0.2em] uppercase text-[#777] font-mono block mb-2"
                   style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                 >
-                  SYSTEM RJ7 // STM32 VERIFIED
+                  {item.label}
+                </span>
+                <span className="text-[13px] text-[#EAE8E2] leading-snug font-medium block">
+                  {item.value}
                 </span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Interactive STM32 Bluetooth & PWM Simulator */}
@@ -345,6 +341,78 @@ export default function TechnicalSpecs() {
           </div>
         </div>
       </div>
+
+      {/* Full Engineering Datasheet Modal */}
+      <AnimatePresence>
+        {datasheetModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setDatasheetModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121212] border border-white/[0.1] max-w-5xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative"
+            >
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
+                <div>
+                  <span
+                    className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#FF5728] block"
+                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                  >
+                    COMPLETE ENGINEERING DATASHEET // 18 PARAMETERS
+                  </span>
+                  <span className="text-[11px] text-[#888]">
+                    Mechanical, Power Distribution, and Autonomous Firmware Specifications
+                  </span>
+                </div>
+                <button
+                  onClick={() => setDatasheetModalOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center border border-white/[0.1] text-[#9E9D96] hover:text-[#EAE8E2] hover:border-[#FF5728] transition-colors"
+                  aria-label="Tutup modal"
+                >
+                  <X size={15} />
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {SPECS_GROUPS.map((group) => (
+                  <div key={group.category} className="border border-white/[0.08] bg-[#0E0E0E] divide-y divide-white/[0.06]">
+                    <div className="px-4 py-3 bg-[#151515]">
+                      <span className="text-[10px] font-mono font-bold text-[#FF5728] tracking-wider uppercase block">
+                        {group.category}
+                      </span>
+                      <span className="text-[9px] font-mono text-[#777] uppercase">
+                        {group.code}
+                      </span>
+                    </div>
+                    {group.items.map((it) => (
+                      <div key={it.label} className="p-3.5 hover:bg-white/[0.02] transition-colors">
+                        <span className="text-[9px] font-mono uppercase text-[#777] tracking-wider block mb-1">
+                          {it.label}
+                        </span>
+                        <span className="text-[12px] text-[#EAE8E2] leading-snug block">
+                          {it.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 mt-6 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#666]">
+                <span>TEAM RIPALDO JR // STM32 LAB VALIDATED</span>
+                <span className="text-[#FF5728]">PROTOTYPE V1.0</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

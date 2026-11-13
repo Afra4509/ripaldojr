@@ -60,6 +60,7 @@ const DIVISIONS = [
 export default function ProjectOverview() {
   const [activeDivisionModal, setActiveDivisionModal] = useState<(typeof DIVISIONS)[0] | null>(null);
   const [overviewModalOpen, setOverviewModalOpen] = useState(false);
+  const [bomModalOpen, setBomModalOpen] = useState(false);
 
   return (
     <section
@@ -114,62 +115,53 @@ export default function ProjectOverview() {
           </div>
         </div>
 
-        {/* Core Divisions Grid (Clean, Card-Focused, Zero Text Clutter) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {DIVISIONS.map((div) => {
+        {/* Core Divisions Grid (Clean, Spacious Editorial Design) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {DIVISIONS.map((div, idx) => {
             const Icon = div.icon;
             return (
               <div
                 key={div.name}
-                className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#161616] to-[#101010] p-6 md:p-7 flex flex-col justify-between shadow-xl group rounded-sm relative corner-bracket"
+                className="border border-white/[0.08] bg-[#121212] p-8 flex flex-col justify-between hover:border-[#FF5728]/50 transition-all duration-300 group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-6">
                     <span
-                      className="text-[10px] tracking-[0.2em] uppercase font-bold text-[#FF5728]"
+                      className="text-[11px] tracking-[0.24em] uppercase font-bold text-[#FF5728]"
                       style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                     >
-                      {div.name}
+                      0{idx + 1} // {div.name}
                     </span>
-                    <Icon size={16} className="text-[#9E9D96] group-hover:text-[#FF5728] transition-colors" />
+                    <Icon size={16} className="text-[#666] group-hover:text-[#FF5728] transition-colors" />
                   </div>
 
                   <h3
-                    className="text-[16px] font-bold text-[#EAE8E2] mb-4 tracking-[0.02em] leading-snug"
+                    className="text-[18px] md:text-[20px] font-bold text-[#EAE8E2] mb-3 tracking-[-0.01em] leading-snug"
                     style={{ fontFamily: "var(--font-display, 'Space Grotesk', sans-serif)" }}
                   >
                     {div.lead}
                   </h3>
 
-                  {/* Clean Technical Tag Badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {div.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 border border-white/[0.06] bg-[#0A0A0A] text-[9px] font-mono text-[#9E9D96]"
-                        style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-[13px] text-[#888] leading-relaxed mb-8">
+                    {div.points[0]}
+                  </p>
                 </div>
 
                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
                   <button
                     onClick={() => setActiveDivisionModal(div)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/[0.08] bg-[#141414] hover:border-[#FF5728] text-[10px] font-mono uppercase tracking-wider text-[#FF5728] hover:text-[#FFA07A] transition-all"
+                    className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#EAE8E2] group-hover:text-[#FF5728] transition-colors"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
-                    <span>INSPEKSI DIVISI</span>
-                    <ArrowUpRight size={13} />
+                    <span>DETAIL DIVISI</span>
+                    <ArrowUpRight size={13} className="text-[#FF5728]" />
                   </button>
 
                   <span
-                    className="text-[9px] font-mono text-[#555] uppercase"
+                    className="text-[9px] font-mono text-[#555] uppercase tracking-wider"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
-                    STATUS: OK
+                    VERIFIED
                   </span>
                 </div>
               </div>
@@ -177,78 +169,70 @@ export default function ProjectOverview() {
           })}
         </div>
 
-        {/* Technical Specification Dossier Table */}
-        <div className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#141414] to-[#0E0E0E] shadow-2xl rounded-sm corner-bracket overflow-hidden">
-          {/* Header */}
-          <div className="px-6 py-4 bg-[#181818] border-b border-white/[0.08] flex items-center justify-between">
+        {/* Modern Minimalist Key Metrics & BOM Trigger */}
+        <div className="border border-white/[0.08] bg-[#101010] p-8 md:p-10 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-white/[0.08]">
+            <div>
+              <span className="text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-[#EAE8E2] tracking-tight block leading-none">
+                84<span className="text-[#FF5728] text-base font-mono font-normal ml-1">MHz</span>
+              </span>
+              <span
+                className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#888] block mt-2"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                ARM CORTEX-M4
+              </span>
+            </div>
+            <div>
+              <span className="text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-[#EAE8E2] tracking-tight block leading-none">
+                4<span className="text-[#FF5728] text-base font-mono font-normal ml-1">WD</span>
+              </span>
+              <span
+                className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#888] block mt-2"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                DIFFERENTIAL DRIVE
+              </span>
+            </div>
+            <div>
+              <span className="text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-[#EAE8E2] tracking-tight block leading-none">
+                3<span className="text-[#FF5728] text-base font-mono font-normal ml-1">DOF</span>
+              </span>
+              <span
+                className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#888] block mt-2"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                ARTICULATED ARM
+              </span>
+            </div>
+            <div>
+              <span className="text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-[#EAE8E2] tracking-tight block leading-none">
+                200<span className="text-[#FF5728] text-base font-mono font-normal ml-1">mm</span>
+              </span>
+              <span
+                className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#888] block mt-2"
+                style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+              >
+                FORWARD REACH
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span
-              className="text-[9px] tracking-[0.26em] uppercase text-[#9E9D96] font-semibold"
+              className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#888]"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
               TECHNICAL SPECIFICATION DOSSIER // BOM
             </span>
-            <span
-              className="px-2.5 py-1 border border-white/[0.08] bg-[#0C0C0C] text-[9px] tracking-[0.18em] uppercase text-[#FF5728] font-semibold"
+            <button
+              onClick={() => setBomModalOpen(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 border border-white/[0.12] bg-[#161616] hover:border-[#FF5728] text-[10px] font-mono tracking-[0.16em] uppercase text-[#EAE8E2] hover:text-[#FF5728] transition-all"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
-              LAB VALIDATED
-            </span>
-          </div>
-
-          {/* 2-Column Grid of Specs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
-            <div className="divide-y divide-white/[0.06]">
-              {SPECS.slice(0, 7).map((spec) => (
-                <div
-                  key={spec.label}
-                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-white/[0.02] transition-colors"
-                >
-                  <span
-                    className="text-[10px] tracking-[0.14em] uppercase text-[#9E9D96] shrink-0 font-medium"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    {spec.label}
-                  </span>
-                  <span className="text-[12px] text-[#EAE8E2] sm:text-right font-normal">
-                    {spec.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="divide-y divide-white/[0.06]">
-              {SPECS.slice(7).map((spec) => (
-                <div
-                  key={spec.label}
-                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-white/[0.02] transition-colors"
-                >
-                  <span
-                    className="text-[10px] tracking-[0.14em] uppercase text-[#9E9D96] shrink-0 font-medium"
-                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-                  >
-                    {spec.label}
-                  </span>
-                  <span className="text-[12px] text-[#EAE8E2] sm:text-right font-normal">
-                    {spec.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Footer annotation */}
-          <div className="px-6 py-3 bg-[#0D0D0D] border-t border-white/[0.08] flex items-center justify-between">
-            <span
-              className="text-[9px] tracking-[0.18em] uppercase text-[#9E9D96]"
-              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-            >
-              ENGINEERED BY TEAM RIPALDO JR // ITS SURABAYA
-            </span>
-            <span
-              className="text-[9px] tracking-[0.18em] uppercase text-[#FF5728]"
-              style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
-            >
-              STM32F401 // PROTOTYPE COMPLETE
-            </span>
+              <span>BUKA DOSSIER SPESIFIKASI LENGKAP</span>
+              <ArrowUpRight size={13} />
+            </button>
           </div>
         </div>
       </div>
@@ -366,6 +350,70 @@ export default function ProjectOverview() {
               <div className="pt-4 mt-6 border-t border-[#222] flex items-center justify-between text-[10px] font-mono text-[#666]">
                 <span>INSTITUT TEKNOLOGI SEPULUH NOPEMBER</span>
                 <span className="text-[#FF5728]">LABORATORY VALIDATED</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Full BOM Dossier Modal */}
+      <AnimatePresence>
+        {bomModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setBomModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121212] border border-white/[0.1] max-w-4xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative"
+            >
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-[#FF5728]" />
+                  <span
+                    className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#FF5728]"
+                    style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                  >
+                    TECHNICAL SPECIFICATION DOSSIER // BOM
+                  </span>
+                </div>
+                <button
+                  onClick={() => setBomModalOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center border border-white/[0.1] text-[#9E9D96] hover:text-[#EAE8E2] hover:border-[#FF5728] transition-colors"
+                  aria-label="Tutup modal"
+                >
+                  <X size={15} />
+                </button>
+              </div>
+
+              <div className="border border-white/[0.08] bg-[#0E0E0E] divide-y divide-white/[0.06] mb-6">
+                {SPECS.map((spec) => (
+                  <div
+                    key={spec.label}
+                    className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-white/[0.02] transition-colors text-[12px]"
+                  >
+                    <span
+                      className="text-[10px] tracking-[0.14em] uppercase text-[#888] font-mono shrink-0"
+                      style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
+                    >
+                      {spec.label}
+                    </span>
+                    <span className="text-[#EAE8E2] sm:text-right font-normal">
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#666]">
+                <span>TEAM RIPALDO JR // 14 HARDWARE PARAMETERS</span>
+                <span className="text-[#FF5728]">BOM VALIDATED</span>
               </div>
             </motion.div>
           </motion.div>
