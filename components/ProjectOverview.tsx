@@ -178,9 +178,9 @@ export default function ProjectOverview() {
         </div>
 
         {/* Technical Specification Dossier Table */}
-        <div className="border border-[#262626] bg-[#141414] shadow-2xl">
+        <div className="tech-card border border-white/[0.08] bg-gradient-to-b from-[#141414] to-[#0E0E0E] shadow-2xl rounded-sm corner-bracket overflow-hidden">
           {/* Header */}
-          <div className="px-6 py-4 bg-[#181818] border-b border-[#262626] flex items-center justify-between">
+          <div className="px-6 py-4 bg-[#181818] border-b border-white/[0.08] flex items-center justify-between">
             <span
               className="text-[9px] tracking-[0.26em] uppercase text-[#9E9D96] font-semibold"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
@@ -188,7 +188,7 @@ export default function ProjectOverview() {
               TECHNICAL SPECIFICATION DOSSIER // BOM
             </span>
             <span
-              className="px-2.5 py-1 border border-[#303030] bg-[#0C0C0C] text-[9px] tracking-[0.18em] uppercase text-[#9E9D96] font-semibold"
+              className="px-2.5 py-1 border border-white/[0.08] bg-[#0C0C0C] text-[9px] tracking-[0.18em] uppercase text-[#FF5728] font-semibold"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
             >
               LAB VALIDATED
@@ -196,12 +196,12 @@ export default function ProjectOverview() {
           </div>
 
           {/* 2-Column Grid of Specs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#222222]">
-            <div className="divide-y divide-[#222222]">
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
+            <div className="divide-y divide-white/[0.06]">
               {SPECS.slice(0, 7).map((spec) => (
                 <div
                   key={spec.label}
-                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-[#181818] transition-colors"
+                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-white/[0.02] transition-colors"
                 >
                   <span
                     className="text-[10px] tracking-[0.14em] uppercase text-[#9E9D96] shrink-0 font-medium"
@@ -215,11 +215,11 @@ export default function ProjectOverview() {
                 </div>
               ))}
             </div>
-            <div className="divide-y divide-[#222222]">
+            <div className="divide-y divide-white/[0.06]">
               {SPECS.slice(7).map((spec) => (
                 <div
                   key={spec.label}
-                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-[#181818] transition-colors"
+                  className="px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 hover:bg-white/[0.02] transition-colors"
                 >
                   <span
                     className="text-[10px] tracking-[0.14em] uppercase text-[#9E9D96] shrink-0 font-medium"
@@ -236,7 +236,7 @@ export default function ProjectOverview() {
           </div>
 
           {/* Footer annotation */}
-          <div className="px-6 py-3 bg-[#111111] border-t border-[#262626] flex items-center justify-between">
+          <div className="px-6 py-3 bg-[#0D0D0D] border-t border-white/[0.08] flex items-center justify-between">
             <span
               className="text-[9px] tracking-[0.18em] uppercase text-[#9E9D96]"
               style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}

@@ -81,32 +81,32 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-[#262626]">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-white/[0.08]">
               {/* Minimalist Specs Bar + Action Buttons */}
               <div className="flex flex-col gap-4 max-w-xl">
                 {/* Clean Specs Tags */}
                 <div className="flex flex-wrap items-center gap-2">
                   <span
-                    className="px-2.5 py-1 border border-[#303030] bg-[#141414]/90 text-[10px] font-mono tracking-wider uppercase text-[#EAE8E2]"
+                    className="px-2.5 py-1 border border-white/[0.08] bg-[#121212]/90 backdrop-blur-sm text-[10px] font-mono tracking-wider uppercase text-[#EAE8E2]"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
                     STM32F401 // 84 MHz
                   </span>
                   <span
-                    className="px-2.5 py-1 border border-[#303030] bg-[#141414]/90 text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+                    className="px-2.5 py-1 border border-white/[0.08] bg-[#121212]/90 backdrop-blur-sm text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
                     4WD CHASSIS
                   </span>
                   <span
-                    className="px-2.5 py-1 border border-[#303030] bg-[#141414]/90 text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
+                    className="px-2.5 py-1 border border-white/[0.08] bg-[#121212]/90 backdrop-blur-sm text-[10px] font-mono tracking-wider uppercase text-[#9E9D96]"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                   >
                     3-AXIS ARM
                   </span>
                   <button
                     onClick={() => setDetailModalOpen(true)}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-[#FF5728]/50 bg-[#161616] hover:bg-[#FF5728]/10 text-[10px] font-mono tracking-wider uppercase text-[#FF5728] transition-colors"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-[#FF5728]/50 bg-[#161616] hover:bg-[#FF5728]/15 text-[10px] font-mono tracking-wider uppercase text-[#FF5728] transition-colors"
                     style={{ fontFamily: "var(--font-mono, 'IBM Plex Mono', monospace)" }}
                     aria-label="Buka ringkasan sistem RJ7"
                   >
